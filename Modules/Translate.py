@@ -1,6 +1,6 @@
 import googletrans
 
-def Translate (_Text, _From, _To):
+def Translate (_Text, _From = 'en', _To = 'en'):
     Translator = googletrans.Translator ()
 
     try:
