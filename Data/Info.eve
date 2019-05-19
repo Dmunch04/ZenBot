@@ -1,5 +1,4 @@
 [
-
   'Version' :: '0.0.1'
   'Build' :: '1'
   'State' :: 'Pre-Alpha'
@@ -8,5 +7,4 @@
   'Server' :: 'ZenBot'
   'Server_ID' :: '555070259619561474'
   'Var_Path' :: 'Data/Var.com'
-
 ];

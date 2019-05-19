@@ -1,9 +1,0 @@
-[
-
-  'Title' :: 'Music Help - Commands:'
-  'mplay <Song name or URL>' :: 'Plays the given song, or adds it to the queue if there is a queue'
-  'mnext' :: 'Plays the next song in the queue'
-  'minfo' :: 'Sends info about the current playing song'
-  'mstop' :: 'Stops the music and makes the bot leave the voice channel'
-
-];

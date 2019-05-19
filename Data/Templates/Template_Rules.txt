@@ -1,15 +1,13 @@
-[
-
-  'Title' :: 'Rules'
-  '1' :: 'Dont be rude to anyone. Everyone is allowed to be here'
-  '2' :: 'Dont write/send something racist'
-  '3' :: 'Dont spam'
-  '4' :: 'Make sure to post off-topic things in the #off-topic channel'
-  '5' :: 'Do not advertise yourself or other in anyway. Only do that in #advertisements'
-  '6' :: 'Do not post scam/piracy links'
-  '7' :: 'Dont post any NSFW content. Remember, there are childs on here as well'
-  '8' :: 'Dont say something offensive'
-  '9' :: 'Dont scream/make loud noises in the voice channels'
-  '10' :: 'Respect these rules and follow them. Anything else will result in punishment'
-
-];
+{
+  "Title": "Rules",
+  "1": "Dont be rude to anyone. Everyone is allowed to be here",
+  "2": "Dont write/send something racist",
+  "3": "Dont spam",
+  "4": "Make sure to post off-topic things in the #off-topic channel",
+  "5": "Do not advertise yourself or other in anyway",
+  "6": "Do not post scam/piracy links",
+  "7": "Dont post any NSFW content. Remember, there are childs on here as well",
+  "8": "Dont say something offensive",
+  "9": "Dont scream/make loud noises in the voice channels",
+  "10": "Respect these rules and follow them. Anything else will result in punishment"
+}

@@ -1,5 +1,3 @@
-[
-
-  'set <Type> <*SubType> <Value>' :: 'Changes a setting'
-
-];
+{
+  "set <Type> <*SubType> <Value>": "Changes a setting"
+}

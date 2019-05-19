@@ -1,5 +1,4 @@
 import os
-import eve
 import json
 import shutil
 
@@ -23,29 +22,24 @@ def AddServer (_Server : discord.Server):
 
     with open ('Data/Templates/Template_Help.txt', 'r') as File: T_Help = File.read ()
     with open ('Data/Templates/Template_ManagementHelp.txt', 'r') as File: T_MaHelp = File.read ()
-    with open ('Data/Templates/Template_MusicHelp.txt', 'r') as File: T_MuHelp = File.read ()
     with open ('Data/Templates/Template_StaffHelp.txt', 'r') as File: T_StHelp = File.read ()
     with open ('Data/Templates/Template_Rules.txt', 'r') as File: T_Rules = File.read ()
     with open ('Data/Templates/Template_Settings.txt', 'r') as File: T_Settings = File.read ()
 
-    with open (Data_Path + '/Help.eve', 'w+') as File: File.write (T_Help)
-    with open (Data_Path + '/ManagementHelp.eve', 'w+') as File: File.write (T_MaHelp)
-    with open (Data_Path + '/MusicHelp.eve', 'w+') as File: File.write (T_MuHelp)
-    with open (Data_Path + '/StaffHelp.eve', 'w+') as File: File.write (T_StHelp)
-    with open (Data_Path + '/Rules.eve', 'w+') as File: File.write (T_Rules)
-    with open (Data_Path + '/LastTweet.txt', 'w+') as File: File.write ('0')
-    with open (Data_Path + '/LastVideo.txt', 'w+') as File: File.write ('0')
-    with open (Path + '/settings.eve', 'w+') as File: File.write (T_Settings)
+    with open (Data_Path + '/Help.json', 'w+') as File: File.write (T_Help)
+    with open (Data_Path + '/ManagementHelp.json', 'w+') as File: File.write (T_MaHelp)
+    with open (Data_Path + '/StaffHelp.json', 'w+') as File: File.write (T_StHelp)
+    with open (Data_Path + '/Rules.json', 'w+') as File: File.write (T_Rules)
+    with open (Path + '/settings.json', 'w+') as File: File.write (T_Settings)
 
-    Data = eve.Load (Path + '/settings.eve')
+    Data = json.load (Path + '/settings.json')
 
-    NewPath = Data['Path']
-    NewPath = NewPath.format (_Server.id).replace ("'", '')
+    NewPath = Data['Path'].format (_Server.id)
 
     Data['Path'] = NewPath
 
-    with open (Path + '/settings.eve', 'w') as File:
-        File.write (Data)
+    with open (Path + '/settings.json', 'w') as File:
+        File.dump (Data, File)
 
 def RemoveServer (_Server : discord.Server):
     Path = Config.Path_Data_Servers + '/' + _Server.id
