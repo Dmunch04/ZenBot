@@ -12,7 +12,7 @@ import Setup
 Token = Config.Token
 Client = commands.Bot (command_prefix = Config.Prefix)
 
-@client.event
+@Client.event
 async def on_ready ():
     await Client.change_presence (game = discord.Game (name = '{0}help'.format (Config.Prefix)))
 
