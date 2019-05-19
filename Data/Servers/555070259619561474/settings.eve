@@ -1,0 +1,89 @@
+[
+
+  @ General
+  @ Set to 0 for unlimited warns
+  'WarnsToBan' :: 5
+  'MessageXP_Min' :: 2
+  'MessageXP_Max' :: 5
+  'ProfanityFiler' :: False
+  @ Splittet by commas
+  'BadWords' :: 'fuck,faggot,idiot,homo,'
+
+  @ Paths - Relative to the servers data path
+  'Path' :: 'Data/Servers/{0}/'
+  'Path_Help' :: 'Data/Help.eve'
+  'Path_MusicHelp' :: 'Data/MusicHelp.eve'
+  'Path_ManagementHelp' :: 'Data/ManagementHelp.eve'
+  'Path_StaffHelp' :: 'Data/StaffHelp.eve'
+  'Path_Rules' :: 'Data/Rules.eve'
+  'Path_LastTweet' :: 'Data/LastTweet.txt'
+  'Path_LastVideo' :: 'Data/LastVideo.txt'
+
+  @ Modules
+  'Module_TwitterAnnouncement' :: False
+  'Module_YoutubeAnnouncement' :: False
+
+  @ Names
+  'TwitterProfile' :: '__Munchii'
+  'YoutubeChannel' :: 'Liquid Studio'
+
+  @ Channels
+  @ Leave empty for no specific channel
+  'Channel_Updates' :: ''
+  'Channel_Commands' :: ''
+  'Channel_TwitterAnnouncements' :: 'twitter-feed'
+  'Channel_YoutubeAnnouncements' :: 'new-videos'
+
+  @ Roles - Permissions
+  'Role_Staff' :: 'Staff'
+  'Role_Management' :: 'Admin'
+  'Role_Ban' :: 'Admin'
+  'Role_Unban' :: 'Admin'
+  'Role_Kick' :: 'Admin'
+  'Role_Mute' :: 'Admin'
+  'Role_Unmute' :: 'Admin'
+  'Role_Warn' :: 'Admin'
+
+  @ Roles - Addable (Used with: !role [Role] and will be displayed in !roles)
+  @ Splittet with commas. Cap sensitive
+  'Roles_Addable' :: 'Defence,Offence,Flank,'
+
+  @ Commands - Default
+  'Command_About' :: True
+  'Command_Help' :: True
+  'Command_Rules' :: True
+  'Command_Mplay' :: True
+  'Command_Mnext' :: True
+  'Command_Mstop' :: True
+  'Command_Role' :: True
+  'Command_Roles' :: True
+  'Command_Server' :: True
+  'Command_Users' :: True
+  'Command_Invite'
+  'Command_Support' :: True
+  'Command_User' :: True
+
+  @ Commands - Search
+  'Command_Google' :: True
+  'Command_Soundcloud' :: True
+  'Command_Stackoverflow' :: True
+  'Command_TwitchChannel' :: True
+  @ Unity Script API Search
+  'Command_Script' :: True
+  @ Unity Manual Search
+  'Command_Manual' :: True
+  'Command_UrbanDictionary' :: True
+  'Command_Wikipedia' :: True
+  'Command_YoutubeChannel' :: True
+  'Command_Youtube' :: True
+
+  @ Commands - Staff
+  'Command_Ban' :: True
+  'Command_Unban' :: True
+  'Command_Kick' :: True
+  'Command_Mute' :: True
+  'Command_Unmute' :: True
+  'Command_Warn' :: True
+  'Command_Setting' :: True
+
+];

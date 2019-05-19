@@ -1,0 +1,28 @@
+[
+
+  @ Feel free to change these.
+  @ Take note: If you remove a command from the commands list in
+  @ Config.py, then you still need to remove the command help
+  @ message in here!
+  'Title' :: 'Help - Commands:'
+  'help' :: 'Shows a list of all the commands commands'
+  'dict <Word>' :: 'Searches the dictionary for the given word'
+  'about' :: 'Sends a short description about ZenBot'
+  'rules' :: 'Sends a message with all the server rules'
+  'server' :: 'Sends information about the server'
+  'support' :: 'Starts a support thread with a staff member'
+  'translate <Text> <From> <To>' :: 'Translates a specific text to another language, and sends the result'
+  'roles' :: 'Sends a message with all the roles'
+  'role <Role>' :: 'Adds the given role to your roles'
+  'urban <Search>' :: 'Searches on Urban Dictionary for the given search item, and returns the result'
+  'google <Search>' :: 'Searches on Google for the given search item, and returns the result'
+  'wiki <Search>' :: 'Searches on Wikipedia for the given search item, and returns the result'
+  'stack <Search>' :: 'Searches on Stackoverflow for the given search item, and returns the result'
+  'manual <Search>' :: 'Searches in the Unity Manual for the given search item, and returns the result'
+  'script <Search>' :: 'Searches in the Unity Script API for the given search item, and returns the result'
+  'soundcloud <Search>' :: 'Searches on Soundcloud for the given search item, and returns the result'
+  'youtube <Search>' :: 'Searches on Youtube for the given search item, and returns the result'
+  'channel <Channel>' :: 'Searches on Youtube for the given channel, and returns the channels stats'
+  'twitch <Channel>' :: 'Searches on Twitch for the given channel, and returns the channels stats'
+
+];

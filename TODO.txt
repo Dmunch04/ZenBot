@@ -1,0 +1,17 @@
+- Rewrite all templates to json
+- Make Dictionary command
+- Make Translate command
+- Fix bugs
+
+- Music Commands                                [ Før Ferien ]
+- Support Command & System
+- Google Command
+- Youtube Command
+- Fix Unity Command                             [ Før Ferien ]
+{ ^^ Currently only works with web. Fix files ^^ }
+- Twitch Command                                [ Før Ferien ]
+- Youtube channel stats Command                 [ Før Ferien ]
+- Server Management Commands
+- Update System
+- Youtube Video Announcement                    [ Før Ferien ]
+- Twitter Post Announcement                     [ Før Ferien ]
