@@ -2,8 +2,8 @@
 - Make Dictionary command
 - Make Translate command
 - Fix bugs
-
-- Music Commands                                [ Før Ferien ]
+- Per server settings
+- Finish website
 - Support Command & System
 - Google Command
 - Youtube Command
