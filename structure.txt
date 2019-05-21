@@ -20,3 +20,24 @@ Server = ctx.message.server
 Channel = ctx.message.channel
 Sender = ctx.message.author
 Message = ctx.message
+
+
+
+# Don't use _ in function names, but use uppercase letters instead #
+-- So:
+def HelloWorld ():
+  print ('Hello, World!')
+
+-- Not:
+def hello_world ():
+  print ('Hello, World')
+
+
+
+# Function args should also start with _ and then uppercase letter, but not in init functions #
+def Test (_Data):
+  print (_Data)
+
+class Test:
+  def __init__ (self, Data):
+    self.Data = Data

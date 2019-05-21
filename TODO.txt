@@ -1,17 +1,18 @@
-- Rewrite all templates to json
+TODO:
 - Make Dictionary command
 - Make Translate command
-- Fix bugs
 - Per server settings
+- Make web panel
 - Finish website
 - Support Command & System
 - Google Command
 - Youtube Command
-- Fix Unity Command                             [ Før Ferien ]
-{ ^^ Currently only works with web. Fix files ^^ }
-- Twitch Command                                [ Før Ferien ]
-- Youtube channel stats Command                 [ Før Ferien ]
+- Fix Unity Command - Only works with web files
+- Twitch Command
+- Youtube channel stats Command
 - Server Management Commands
 - Update System
-- Youtube Video Announcement                    [ Før Ferien ]
-- Twitter Post Announcement                     [ Før Ferien ]
+- Youtube Video Announcement
+- Twitter Post Announcement
+- Fix bugs
+- Probably more

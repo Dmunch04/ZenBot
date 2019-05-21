@@ -1,4 +1,4 @@
-import eve
+import json
 
 import discord
 from discord.ext import commands
@@ -21,7 +21,7 @@ class CMD_User:
 
         Path = Config.Path_Data_Servers + '/' + Server.id + '/Users/' + _User.name + '#' + _User.discriminator + '/' + 'UserFile.eve'
 
-        Data = eve.load (Path)
+        Data = json.load (Path)
 
         I_Name = Data['Name']
         I_Tag = Data['Tag']

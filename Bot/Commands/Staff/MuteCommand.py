@@ -1,4 +1,4 @@
-import eve
+import json
 
 import discord
 from discord.ext import commands
@@ -23,21 +23,16 @@ class CMD_Mute:
 
         Path = Config.Path_Data_Servers + '/' + Server.id + '/settings.eve'
 
-        Data = eve.load (Path)
+        Data = json.load (Path)
 
         if role.CheckRole (Sender, Data['Role_Mute']) == False:
             await embed.ErrorEmbed (self.Client, 'Permission', Channel)
             return
 
-        #Role = discord.utils.get (Server.roles, name = Config.Role_Muted)
-
-        #await self.Client.add_roles (_User, Role)
-
-        # Add a duration check so it waits to unmute
-
         RoleOverwrite = Channel.overwrites_for (_User) or \
         discord.PermissionOverwrite ()
         RoleOverwrite.send_messages = False
+
         await self.Client.edit_channel_permissions (
             Channel,
             _User,
@@ -57,19 +52,16 @@ class CMD_Mute:
 
         Path = Config.Path_Data_Servers + '/' + Server.id + '/settings.eve'
 
-        Data = eve.load (Path)
+        Data = json.load (Path)
 
         if role.CheckRole (Sender, Data['Role_Unmute']) == False:
             await embed.ErrorEmbed (self.Client, 'Permission', Channel)
             return
 
-        #Role = discord.utils.get (Server.roles, name = Config.Role_Muted)
-
-        #await self.Client.remove_roles (_User, Role)
-
         RoleOverwrite = Channel.overwrites_for (_User) or \
         discord.PermissionOverwrite ()
         RoleOverwrite.send_messages = True
+        
         await self.Client.edit_channel_permissions (
             Channel,
             _User,
