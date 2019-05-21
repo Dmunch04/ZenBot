@@ -1,0 +1,15 @@
+[
+
+  'Name' :: 'ZenBot'
+  'Version' :: '0.0.1'
+  'State' :: 'Pre-Alpha'
+  'Build' :: '1'
+  'Authors' :: 'Munchii'
+  'LastLog' :: '21-05-2019'
+
+  'Readme' :: '/README.md'
+  'License' :: '/LICENSE'
+  'ProjectFolder' :: '/Bot'
+  'MainFile' :: '/Bot/Main.py'
+
+];

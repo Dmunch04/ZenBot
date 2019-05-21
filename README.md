@@ -4,6 +4,7 @@
 This is the official repo for the ZenBot. Feel free to fork it, and work on it.
 The bot token can be changed in the `Config.py` file.
 Upcoming website: <a href = 'http://zenbot.xyz'>zenbot.xyz</a>
+For now you can use: <a href = 'https://dmunch04.github.io/ZenBot/'>this website</a>
 
 <br>
 

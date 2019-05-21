@@ -2,7 +2,7 @@
 import discord
 
 # Lib Imports
-import eve
+import json
 
 # Script Imports
 import Config
@@ -50,7 +50,7 @@ async def AnnouncementEmbed (_Client, _Title, _Message, _Channel):
 
 # Embed for file messages. Ex. help and rules messages
 async def ListEmbed (_Client, _Path, _Channel):
-    Messages = eve.load (_Path)
+    Messages = json.load (_Path)
 
     Embed = discord.Embed (color = discord.Color.purple ())
     Embed.set_author (name = Messages['Title'])
@@ -105,6 +105,7 @@ async def ErrorEmbed (_Client, _Type, _Channel):
     Title = Config.Errors[_Type]['Title']
     Type = Config.Errors[_Type]['Type']
     Error = Config.Errors[_Type]['Error']
+    Code = Config.Errors[_Type]['Code']
 
     Embed = discord.Embed (title = Title, description = Error, color = discord.Color.red ())
     Embed.set_author (name = Type)
