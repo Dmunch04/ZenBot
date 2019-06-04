@@ -55,11 +55,18 @@ Errors = {
         'Code': '76.XE003'
     },
 
+    'Translate': {
+        'Title': 'Cannot Translate',
+        'Type': 'Translate Error',
+        'Error': 'I cannot translate {} from {} to {}!',
+        'Code': '76.XE004'
+    },
+
     'Unkown': {
         'Title': 'Something went wrong..',
         'Type': 'Error',
         'Error': 'Whoops! Looks like something went wrong.',
-        'Code': '76.XE004'
+        'Code': '76.XE404'
     }
 }
 

@@ -16,3 +16,4 @@ TODO:
 - Twitter Post Announcement
 - Fix bugs
 - Probably more
+- Rewrite error system

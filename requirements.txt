@@ -6,3 +6,4 @@ git+git://github.com/soundcloud/soundcloud-python.git
 DavesLogger
 fuzzywuzzy
 googletrans
+google-search
