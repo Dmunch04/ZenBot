@@ -7,13 +7,14 @@ import Config
 from Modules import CommandCheck as cmd
 from Modules import RoleCheck as role
 from Helpers import EmbedHelper as embed
+from BanCommand import ban
 
 class CMD_Warn:
     def __init__ (self, Client):
         self.Client = Client
 
     @commands.command (pass_context = True)
-    async def warn (self, ctx, _User : discord.User):
+    async def warn (self, ctx, _User : discord.User, *, Reason):
         Server = ctx.message.server
         Message = ctx.message
         Channel = ctx.message.channel
@@ -41,8 +42,15 @@ class CMD_Warn:
 
         Settings = eve.load (Path)
 
+        # DMs user when they get warned
+        await _User.create_dm()
+        await _User.dm_channel.send(f'You have been warned from {0} for {1}'.format(Server, Reason))
+
         if int (Data['Warns']) > int (Settings['WarnsToBan']):
-            await self.Client.ban (_User, 0)
+            # DMs user when banned for too many warns
+            await _User.create_dm()
+            await _User.dm_channel.send(f'You have been banned from {0} for getting too many warnings'.format(Server))
+            await self.Client.ban (_User, 0, reason = 'Too many warnings')
 
         await self.Client.delete_message (Message)
 

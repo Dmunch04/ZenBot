@@ -13,7 +13,7 @@ class CMD_Kick:
         self.Client = Client
 
     @commands.command (pass_context = True)
-    async def kick (self, ctx, _User : discord.User):
+    async def kick (self, ctx, _User : discord.User, *, Reason):
         Server = ctx.message.server
         Channel = ctx.message.channel
         Message = ctx.message
@@ -28,6 +28,10 @@ class CMD_Kick:
         if role.CheckRole (Sender, Data['Role_Kick']) == False:
             await embed.ErrorEmbed (self.Client, 'Permission', Channel)
             return
+
+        await _User.create_dm()
+        await _User.dm_channel.send(f'You have been kicked from {0} for {1}'.format(Server, Reason))
+
 
         await self.Client.kick (_User)
 
