@@ -15,7 +15,7 @@ class Events:
         self.Client = Client
 
     async def on_message (self, _Message):
-        Server = _Message.server
+        Server = _Message.guild
         Channel = _Message.channel
         Sender = _Message.author
 

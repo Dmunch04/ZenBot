@@ -6,7 +6,7 @@ import discord
 
 import Config
 
-def AddServer (_Server : discord.Server):
+def AddServer (_Server : discord.guild):
     Path = Config.Path_Data_Servers + '/' + _Server.id
     User_Path = Path + '/Users'
     Data_Path = Path + '/Data'
@@ -41,7 +41,7 @@ def AddServer (_Server : discord.Server):
     with open (Path + '/settings.json', 'w') as File:
         File.dump (Data, File)
 
-def RemoveServer (_Server : discord.Server):
+def RemoveServer (_Server : discord.guild):
     Path = Config.Path_Data_Servers + '/' + _Server.id
 
     shutil.rmtree (Path)
