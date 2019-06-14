@@ -13,7 +13,7 @@ class CMD_Ban:
         self.Client = Client
 
     @commands.command (pass_context = True)
-    async def ban (self, ctx, _User : discord.User):
+    async def ban (self, ctx, _User : discord.User, *, Reason : str):
         Server = ctx.message.server
         Channel = ctx.message.channel
         Message = ctx.message
@@ -28,17 +28,22 @@ class CMD_Ban:
         if role.CheckRole (Sender, Data['Role_Ban']) == False:
             await embed.ErrorEmbed (self.Client, 'Permission', Channel)
             return
-
-        await self.Client.ban (_User, 0)
-
+        # DMs the user before they get banned
+        await _User.create_dm()
+        await _User.dm_channel.send(f'You have been banned from {0} for {1}'.format(Server, Reason))
+        
+        # Bans the user
+        await self.Client.ban (_User, 0, reason = Reason)
+        
+        # Deletes the command
         await self.Client.delete_message (Message)
 
     @commands.command (pass_context = True)
-    async def unabn (self, ctx, _User : discord.User):
+    async def unban (self, ctx, _User : discord.User):
         Server = ctx.message.server
         Message = ctx.message
         Channel = ctx.message.channel
-
+        
         if cmd.CheckCommand ('Unban', Server.id) == False:
             return
 
