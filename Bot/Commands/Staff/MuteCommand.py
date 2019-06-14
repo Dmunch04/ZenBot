@@ -14,6 +14,7 @@ class CMD_Mute:
 
     @commands.command()
     async def mute (self, ctx, _User : discord.Member, *, _Reason):
+        Sender = ctx.author
         Server = ctx.guild
         Channel = ctx.channel
         Message = ctx.message
@@ -34,8 +35,7 @@ class CMD_Mute:
         RoleOverwrite.send_messages = False
         RoleOverwrite.add_reactions = False
 
-        await self.Client.edit_channel_permissions (
-            Channel,
+        await Channel.set_permissions(
             _User,
             RoleOverwrite
         )
@@ -44,7 +44,7 @@ class CMD_Mute:
         await _User.create_dm()
         await _User.dm_channel.send(f'You have been muted from {0} for {1}'.format(Server, _Reason))
 
-        await self.Client.delete_message (Message)
+        await Message.delete()
 
     @commands.command()
     async def unmute (self, ctx, _User : discord.User):
@@ -67,8 +67,7 @@ class CMD_Mute:
         discord.PermissionOverwrite ()
         RoleOverwrite.send_messages = True
         
-        await self.Client.edit_channel_permissions (
-            Channel,
+        await Channel.set_permissions(
             _User,
             RoleOverwrite
         )
@@ -76,7 +75,7 @@ class CMD_Mute:
         await _User.create_dm()
         await _User.dm_channel.send(f'You have been unmuted from {0}'.format(Server))
 
-        await self.Client.delete_message (Message)
+        await Message.delete()
 
 def setup (_Client):
     _Client.add_cog (CMD_Mute (_Client))

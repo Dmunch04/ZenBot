@@ -14,6 +14,7 @@ class CMD_Kick:
 
     @commands.command()
     async def kick (self, ctx, _User : discord.User, *, _Reason):
+        Sender = ctx.author
         Server = ctx.guild
         Channel = ctx.channel
         Message = ctx.message
@@ -30,12 +31,12 @@ class CMD_Kick:
             return
 
         await _User.create_dm()
-        await _User.dm_channel.send(f'You have been kicked from {0} for {1}'.format(Server, _Reason))
+        await _User.dm_channel.send(f'You have been kicked from {Server} for {_Reason}')
 
 
-        await self.Client.kick (_User, reason = _Reason)
+        await Server.kick (_User, reason = _Reason)
 
-        await self.Client.delete_message (Message)
+        await Message.delete()
 
 def setup (_Client):
     _Client.add_cog (CMD_Kick (_Client))

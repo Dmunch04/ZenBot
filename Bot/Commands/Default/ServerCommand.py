@@ -25,7 +25,7 @@ class CMD_Server:
         if cmd.CheckCommand ('Users', Server.id) == False:
             return
 
-        await self.Client.say ('There are currently {0} members!'.format (Server.member_count))
+        await ctx.send('There are currently {0} members!'.format (Server.member_count))
 
     @commands.command()
     async def invite (self, ctx):
@@ -34,7 +34,7 @@ class CMD_Server:
         if cmd.CheckCommand ('Invite', Server.id) == False:
             return
 
-        await self.Client.say ('Invite Link: {0}'.format (discord.invites_from (Server)[0])) # Find the invite
+        await ctx.send('Invite Link: {0}'.format (Server.invites()[0])) # Find the invite
 
 def setup (_Client):
     _Client.add_cog (CMD_Server (_Client))

@@ -84,9 +84,9 @@ async def ServerEmbed (_Client, _Server, _Channel):
     Embed.set_author (name = f'About {_Server.name}:')
     Embed.add_field (name = 'Name', value = _Server.name, inline = False)
     Embed.add_field (name = 'Users', value = _Server.member_count, inline = False)
-    Embed.add_field (name = 'Owner', value = f'{_server.owner.name}#{_server.owner.discriminator}', inline = False)
+    Embed.add_field (name = 'Owner', value = f'{_Server.owner.name}#{_Server.owner.discriminator}', inline = False)
     Embed.add_field (name = 'Region', value = _Server.region, inline = False)
-    Embed.add_field (name = 'Invite', value = discord.invites_from (_Server)[0], inline = False) # Get the invite
+    Embed.add_field (name = 'Invite', value = _Server.invites()[0], inline = False) # Get the invite
 
     await _Client.send_message (_Channel, embed = Embed)
 

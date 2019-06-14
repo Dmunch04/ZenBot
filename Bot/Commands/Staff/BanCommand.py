@@ -33,13 +33,13 @@ class CMD_Ban:
         await _User.dm_channel.send(f'You have been banned from {0} for {1}'.format(Server, _Reason))
         
         # Bans the user
-        await self.Client.ban (_User, 0, reason = _Reason)
+        await Server.ban (_User, 0, reason = _Reason)
         
         # Deletes the command
-        await self.Client.delete_message (Message)
+        await Message.delete()
 
     @commands.command()
-    async def unban (self, ctx, _User : discord.User):
+    async def unban (self, ctx, _User : discord.User, *, _Reason):
         Server = ctx.guild
         Message = ctx.message
         Channel = ctx.channel
@@ -55,9 +55,9 @@ class CMD_Ban:
             await embed.ErrorEmbed (self.Client, 'Permission', Channel)
             return
 
-        await self.Client.ban (Server, _User)
+        await Server.unban (_User, reason = _Reason)
 
-        await self.Client.delete_message (Message)
+        await Message.delete()
 
 def setup (_Client):
     _Client.add_cog (CMD_Ban (_Client))

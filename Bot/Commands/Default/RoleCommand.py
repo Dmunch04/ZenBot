@@ -24,9 +24,9 @@ class CMD_Role:
         Role = discord.utils.get (Server.roles, name = _Role)
 
         if role.CheckRole (Sender, Role) == True:
-            await self.Client.remove_roles (Sender, Role)
+            await Sender.remove_roles (Role)
         else:
-            await self.Client.add_roles (Sender, Role)
+            await Sender.add_roles (Role)
 
     @commands.command()
     async def roles (self, ctx):

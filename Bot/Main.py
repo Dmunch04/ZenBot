@@ -14,7 +14,7 @@ Client = commands.Bot (command_prefix = Config.Prefix)
 
 @Client.event
 async def on_ready ():
-    await Client.change_presence (game = discord.Game (name = '{0}help'.format (Config.Prefix)))
+    await Client.change_presence (activity = discord.Game (name = '{0}help'.format (Config.Prefix)))
 
     Logs.Server ('The bot has been booted!')
 

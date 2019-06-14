@@ -50,9 +50,9 @@ class CMD_Warn:
             # DMs user when banned for too many warns
             await _User.create_dm()
             await _User.dm_channel.send(f'You have been banned from {0} for getting too many warnings'.format(Server))
-            await self.Client.ban (_User, 0, reason = 'Too many warnings')
+            await Server.ban (_User, 0, reason = 'Too many warnings')
 
-        await self.Client.delete_message (Message)
+        await Message.delete()
 
 def setup (_Client):
     _Client.add_cog (CMD_Warn (_Client))

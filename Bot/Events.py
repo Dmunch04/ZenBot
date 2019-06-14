@@ -36,7 +36,7 @@ class Events:
 
         if Data['ProfanityFiler'] == True:
             if any (Word in _Message.content.lower () for Word in Config.Bad_Words):
-                await self.Client.delete_message (_Message)
+                await _Message.delete()
 
         await self.Client.process_commands (_Message)
 
@@ -51,13 +51,13 @@ class Events:
     async def on_member_update (self, _Before, _After):
         filing.UpdateMember (_Before, _After)
 
-    async def on_server_join (self, _Server):
+    async def on_guild_join (self, _Server):
         filing.AddServer (_Server)
 
-    async def on_server_remove (self, _Server):
+    async def on_guild_remove (self, _Server):
         filing.RemoveServer (_Server)
 
-    async def on_server_update (self, _Before, _After):
+    async def on_guild_update (self, _Before, _After):
         filing.UpdateServer (_Before, _After)
 
 def setup (_Client):
