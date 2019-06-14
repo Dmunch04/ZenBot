@@ -9,10 +9,10 @@ class CMD_Unity:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def script (self, ctx, *Search):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+        Server = ctx.guild
+        Channel = ctx.channel
 
         if cmd.CheckCommand ('Script', Server.id) == False:
             return
@@ -30,10 +30,10 @@ class CMD_Unity:
 
             await embed.ResultLinkEmbed (self.Client, 'Unity Script API', Result.Title, Result.Tags, Result.Url, Channel)
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def manual (self, ctx, *Search):
-        Server = ctx.message.channel
-        Channel = ctx.message.channel
+        Server = ctx.channel
+        Channel = ctx.channel
 
         if cmd.CheckCommand ('Manual', Server.id) == False:
             return

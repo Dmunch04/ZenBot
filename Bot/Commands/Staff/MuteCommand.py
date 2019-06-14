@@ -12,10 +12,10 @@ class CMD_Mute:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
-    async def mute (self, ctx, _User : discord.Member, *, Reason):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+    @commands.command()
+    async def mute (self, ctx, _User : discord.Member, *, _Reason):
+        Server = ctx.guild
+        Channel = ctx.channel
         Message = ctx.message
 
         if cmd.CheckCommand ('Mute', Server.id) == False:
@@ -42,14 +42,14 @@ class CMD_Mute:
 
         # DMs user after they get muted
         await _User.create_dm()
-        await _User.dm_channel.send(f'You have been muted from {0} for {1}'.format(Server, Reason))
+        await _User.dm_channel.send(f'You have been muted from {0} for {1}'.format(Server, _Reason))
 
         await self.Client.delete_message (Message)
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def unmute (self, ctx, _User : discord.User):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+        Server = ctx.guild
+        Channel = ctx.channel
         Message = ctx.message
 
         if cmd.CheckCommand ('Unmute', Server.id) == False:

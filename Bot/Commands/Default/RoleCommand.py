@@ -12,11 +12,11 @@ class CMD_Role:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def role (self, ctx, _Role):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
-        Sender = ctx.message.author
+        Server = ctx.guild
+        Channel = ctx.channel
+        Sender = ctx.author
 
         if cmd.CheckCommand ('Role', Server.id) == False:
             return
@@ -28,10 +28,10 @@ class CMD_Role:
         else:
             await self.Client.add_roles (Sender, Role)
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def roles (self, ctx):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+        Server = ctx.guild
+        Channel = ctx.channel
 
         if cmd.CheckCommand ('Roles', Server.id) == False:
             return

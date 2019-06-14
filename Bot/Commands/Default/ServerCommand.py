@@ -8,28 +8,28 @@ class CMD_Server:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def server (self, ctx):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+        Server = ctx.guild
+        Channel = ctx.channel
 
         if cmd.CheckCommand ('Server', Server.id) == False:
             return
 
         await embed.ServerEmbed (self.Client, Server, Channel)
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def users (self, ctx):
-        Server = ctx.message.server
+        Server = ctx.guild
 
         if cmd.CheckCommand ('Users', Server.id) == False:
             return
 
         await self.Client.say ('There are currently {0} members!'.format (Server.member_count))
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def invite (self, ctx):
-        Server = ctx.message.server
+        Server = ctx.guild
 
         if cmd.CheckCommand ('Invite', Server.id) == False:
             return

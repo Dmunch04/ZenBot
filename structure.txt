@@ -16,9 +16,9 @@ from Helpers import EmbedHelper as embed
 
 
 # This is how the ctx should be ordered #
-Server = ctx.message.server
-Channel = ctx.message.channel
-Sender = ctx.message.author
+Server = ctx.guild
+Channel = ctx.channel
+Sender = ctx.author
 Message = ctx.message
 
 

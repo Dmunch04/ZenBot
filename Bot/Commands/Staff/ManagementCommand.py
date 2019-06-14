@@ -8,10 +8,10 @@ class CMD_Manage:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def set (self, ctx, *_SubType, _Type = '', Value = ''):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+        Server = ctx.guild
+        Channel = ctx.channel
 
         if cmd.CheckCommand ('Setting', Server.id) == False:
             return

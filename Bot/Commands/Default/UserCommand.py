@@ -11,10 +11,10 @@ class CMD_User:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def user (self, ctx, _User : discord.User):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+        Server = ctx.guild
+        Channel = ctx.channel
 
         if cmd.CheckCommand ('User', Server.id) == False:
             return

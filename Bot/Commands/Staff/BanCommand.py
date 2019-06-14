@@ -12,10 +12,10 @@ class CMD_Ban:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
-    async def ban (self, ctx, _User : discord.User, *, Reason : str):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+    @commands.command()
+    async def ban (self, ctx, _User : discord.User, *, _Reason : str):
+        Server = ctx.guild
+        Channel = ctx.channel
         Message = ctx.message
 
         if cmd.CheckCommand ('Ban', Server.id) == False:
@@ -30,19 +30,19 @@ class CMD_Ban:
             return
         # DMs the user before they get banned
         await _User.create_dm()
-        await _User.dm_channel.send(f'You have been banned from {0} for {1}'.format(Server, Reason))
+        await _User.dm_channel.send(f'You have been banned from {0} for {1}'.format(Server, _Reason))
         
         # Bans the user
-        await self.Client.ban (_User, 0, reason = Reason)
+        await self.Client.ban (_User, 0, reason = _Reason)
         
         # Deletes the command
         await self.Client.delete_message (Message)
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def unban (self, ctx, _User : discord.User):
-        Server = ctx.message.server
+        Server = ctx.guild
         Message = ctx.message
-        Channel = ctx.message.channel
+        Channel = ctx.channel
         
         if cmd.CheckCommand ('Unban', Server.id) == False:
             return

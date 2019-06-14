@@ -9,10 +9,10 @@ class CMD_Stackoverflow:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def stackoverflow (self, ctx, *Search):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+        Server = ctx.guild
+        Channel = ctx.channel
 
         if cmd.CheckCommand ('Stackoverflow', Server.id) == False:
             return

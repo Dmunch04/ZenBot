@@ -12,10 +12,10 @@ class CMD_Kick:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
-    async def kick (self, ctx, _User : discord.User, *, Reason):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
+    @commands.command()
+    async def kick (self, ctx, _User : discord.User, *, _Reason):
+        Server = ctx.guild
+        Channel = ctx.channel
         Message = ctx.message
 
         if cmd.CheckCommand ('Kick', Server.id) == False:
@@ -30,10 +30,10 @@ class CMD_Kick:
             return
 
         await _User.create_dm()
-        await _User.dm_channel.send(f'You have been kicked from {0} for {1}'.format(Server, Reason))
+        await _User.dm_channel.send(f'You have been kicked from {0} for {1}'.format(Server, _Reason))
 
 
-        await self.Client.kick (_User)
+        await self.Client.kick (_User, reason = _Reason)
 
         await self.Client.delete_message (Message)
 

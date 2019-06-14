@@ -12,11 +12,11 @@ class CMD_Help:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
+    @commands.command()
     async def help (self, ctx, _HelpSubject = ''):
-        Server = ctx.message.server
-        Channel = ctx.message.channel
-        Sender = ctx.message.author
+        Server = ctx.guild
+        Channel = ctx.channel
+        Sender = ctx.author
 
         if cmd.CheckCommand ('Help', Server.id) == False:
             return

@@ -13,11 +13,11 @@ class CMD_Warn:
     def __init__ (self, Client):
         self.Client = Client
 
-    @commands.command (pass_context = True)
-    async def warn (self, ctx, _User : discord.User, *, Reason):
-        Server = ctx.message.server
+    @commands.command()
+    async def warn (self, ctx, _User : discord.User, *, _Reason):
+        Server = ctx.guild
         Message = ctx.message
-        Channel = ctx.message.channel
+        Channel = ctx.channel
 
         if cmd.CheckCommand ('Warn', Server.id) == False:
             return
@@ -44,7 +44,7 @@ class CMD_Warn:
 
         # DMs user when they get warned
         await _User.create_dm()
-        await _User.dm_channel.send(f'You have been warned from {0} for {1}'.format(Server, Reason))
+        await _User.dm_channel.send(f'You have been warned from {0} for {1}'.format(Server, _Reason))
 
         if int (Data['Warns']) > int (Settings['WarnsToBan']):
             # DMs user when banned for too many warns
