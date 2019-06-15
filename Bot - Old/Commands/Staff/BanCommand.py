@@ -34,7 +34,7 @@ class CMD_Ban:
         await self.Client.delete_message (Message)
 
     @commands.command (pass_context = True)
-    async def unabn (self, ctx, _User : discord.User):
+    async def unban (self, ctx, _User : discord.User):
         Server = ctx.message.server
         Message = ctx.message
         Channel = ctx.message.channel
@@ -50,7 +50,7 @@ class CMD_Ban:
             await embed.ErrorEmbed (self.Client, 'Permission', Channel)
             return
 
-        await self.Client.ban (Server, _User)
+        await self.Client.unban (Server, _User)
 
         await self.Client.delete_message (Message)
 

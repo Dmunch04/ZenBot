@@ -61,7 +61,7 @@ class CMD_Mute:
         RoleOverwrite = Channel.overwrites_for (_User) or \
         discord.PermissionOverwrite ()
         RoleOverwrite.send_messages = True
-        
+
         await self.Client.edit_channel_permissions (
             Channel,
             _User,
