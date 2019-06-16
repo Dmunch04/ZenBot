@@ -15,7 +15,6 @@ class BanCommand (commands.Cog):
         """ Bans 1 or more members """
         Server = ctx.guild
 
-        
         for Member in _Members:
             await Member.create_dm ()
             await Member.dm_channel.send (f"You have been banned from {Server} \nReason: {_Reason}")
