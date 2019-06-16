@@ -1,15 +1,20 @@
+# Module imports
 import json
 import logging
 import datetime
 
+# Discord imports
 import discord
 from discord.ext import commands
 
+# File/Function imports
 from Core import PluginDatabase, Database, PermissionLevel
 
 Log = logging.getLogger ('ZenBot')
 
 class ZenBot (commands.Bot):
+    """ Main bot class. This will be the core of our bot """
+
     def __init__ (self):
         super ().__init__ (
             command_prefix = self.Prefix,
@@ -64,18 +69,17 @@ class ZenBot (commands.Bot):
 
     def LoadExtensions (self, _Folder: str = '', _Extensions: list = [], _Suffix: str = ''):
         for Extension in _Extensions:
-            Name = Extension
-            Extension = '{0}.{1}{2}'.format (_Folder, Extension, _Suffix)
+            Name = Extension.split ('.')[-1]
+            Extension = f'{_Folder}.{Extension}{_Suffix}'
 
             try:
                 self.load_extension (Extension)
 
-                Name = str (Name.split ('.')[-1])
                 self.Log (f'- {Name} was successfully loaded!')
 
             except Exception as Error:
-                ErrorMessage = '{0} cannot be loaded. Error: {1}'.format (Extension, Error)
-                print (ErrorMessage)
+                ErrorMessage = f'{Name} cannot be loaded. Error: {Error}'
+                Logs.Error (ErrorMessage)
 
                 self.Log (f'- {ErrorMessage}')
 
