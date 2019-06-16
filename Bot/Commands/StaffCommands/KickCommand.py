@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from Core import PermissionLevel, HasPermission
+from Bot.Core import PermissionLevel, HasPermission
 
 class KickCommand (commands.Cog):
     def __init__ (self, Client: discord.Client):
@@ -16,7 +16,11 @@ class KickCommand (commands.Cog):
 
         for Member in _Members:
             await Member.create_dm ()
-            await Member.dm_channel.send (f'You have been kicked from {Server}\nReason: {_Reason}\nJoin back at: {Server.invites ()[0]}')
+            
+            Embed=discord.Embed (title="You have been kicked", description=f"You have been kicked from {Server} for {_Reason}", color=0xff0000)
+            Embed.set_author (name=self.Client.name, url="https://dmunch04.github.io/ZenBot/",icon_url= self.Client.avatar_url)
+            Embed.add_field(name='Join Back', value= f'To rejoin {Server}, [click here]({Server.invites()[0]} "{Server.name}"', inline=True)
+            await Member.dm_channel.send (embed=Embed)
 
             await Server.kick (Member, reason = _Reason)
 

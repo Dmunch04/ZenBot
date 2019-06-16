@@ -3,7 +3,7 @@ from DavesLogger import Logs
 import discord
 from discord.ext import commands
 
-from Core import PermissionLevel, HasPermission
+from Bot.Core import PermissionLevel, HasPermission
 
 class MuteCommand (commands.Cog):
     def __init__ (self, Client: discord.Client):
@@ -25,7 +25,9 @@ class MuteCommand (commands.Cog):
 
         for Member in _Members:
             await Member.create_dm ()
-            await Member.dm_channel.send (f'You have been muted in {Server}\nReason: {_Reason}\n')
+            Embed=discord.Embed (title="You have been muted", description=f"You have been muted from {Server} for {_Reason}", color=0xff0000)
+            Embed.set_author (name=self.Client.name, url="https://dmunch04.github.io/ZenBot/", icon_url= self.Client.avatar_url)
+            await Member.dm_channel.send (embed=Embed)
 
             await Member.add_roles (MutedRole, reason = _Reason)
 
