@@ -1,9 +1,9 @@
 import discord
 
-from Core import Server
+from Core.Models import Server
 
 class Database:
-    def __init__ (self, Client):
+    def __init__ (self, Client: discord.Client):
         self.Client = Client
 
         self.PluginDatabase = None
@@ -16,7 +16,7 @@ class Database:
 
         self.PluginDatabase = Plugins
 
-    async def GetServer (self, _ID: int):
+    async def GetServer (self, _ID: int) -> Server:
         Server = self.Client.get_guild (_ID)
 
         return Server (Server, self)

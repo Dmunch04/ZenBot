@@ -1,6 +1,6 @@
 import discord
 
-from Utilities import Collection
+from Core.Utilities import Collection
 
 class Plugin:
     def __init__ (self, Name: str, Version: str, Author: str, Description: str, BotVersion: str, Username: str, Repo: str, Branch: str):

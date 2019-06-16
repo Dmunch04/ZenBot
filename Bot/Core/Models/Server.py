@@ -2,11 +2,11 @@ import json
 
 import discord
 
-from Core.Plugins import Plugin
-from Utilities import Collection
+from Core.Utilities import Collection
+from Core.Models.Plugins import Plugin
 
 class Server:
-    async def __init__ (self, Client: discord.Client, Server: discord.Guild):
+    def __init__ (self, Client: discord.Client, Server: discord.Guild):
         self.Client = Client
         self.Server = Server
 
@@ -14,4 +14,4 @@ class Server:
         self.Commands = {}
 
         Path = f'{self.Client.ServerPath.format (str (self.Server.id))}/Config.json'
-        self.Config = await self.Client.LoadJsonFile (Path)
+        self.Config = self.Client.LoadJsonFile (Path)

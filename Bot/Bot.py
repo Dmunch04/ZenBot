@@ -5,9 +5,9 @@ import datetime
 import discord
 from discord.ext import commands
 
-from Core import PluginDatabase, Database
+from Core import PluginDatabase, Database, PermissionLevel
 
-Log = logging.getLogger (__name__)
+Log = logging.getLogger ('ZenBot')
 
 class ZenBot (commands.Bot):
     def __init__ (self):
@@ -95,4 +95,6 @@ class ZenBot (commands.Bot):
         self.Log ('\n')
 
         self.Log ('Running bot...')
+        self.Log ('\n')
+
         self.run (self.Config.get ('Token', ''))

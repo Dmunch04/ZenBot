@@ -14,10 +14,10 @@ class Events (commands.Cog):
         self.Client.Log ('Bot is running!')
 
     @commands.Cog.listener ()
-    async def on_message (self, _Message):
+    async def on_message (self, _Message: str):
         # Do something here I guess
 
         await self.Client.process_commands (_Message)
 
-def setup (_Client):
+def setup (_Client: discord.Client):
     _Client.add_cog (Events (_Client))

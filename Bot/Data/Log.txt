@@ -14,3 +14,470 @@ Loading Modules...
 
 Running bot...
 Bot is running!
+--------------------
+Bot started at: 2019-06-16 17:32:29.236579
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Commands.OwnerCommands.PluginCommand cannot be loaded. Error: name 'command' is not defined
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+--------------------
+Bot started at: 2019-06-16 17:32:59.038831
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Commands.OwnerCommands.PluginCommand cannot be loaded. Error: name 'command' is not defined
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+--------------------
+Bot started at: 2019-06-16 17:33:13.023143
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Commands.OwnerCommands.PluginCommand cannot be loaded. Error: name 'command' is not defined
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+--------------------
+Bot started at: 2019-06-16 17:33:44.633920
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Commands.OwnerCommands.PluginCommand cannot be loaded. Error: name 'command' is not defined
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+--------------------
+Bot started at: 2019-06-16 17:34:30.916449
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+--------------------
+Bot started at: 2019-06-16 17:36:40.049397
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+Bot is running!
+--------------------
+Bot started at: 2019-06-16 17:38:20.100262
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+Bot is running!
+--------------------
+Bot started at: 2019-06-16 17:39:26.583694
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:39:47.614258
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:40:08.154043
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-16 17:40:37.991168
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:40:50.200514
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:41:01.812283
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:41:38.742835
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:42:09.439047
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: Extension 'Commands.StaffCommands.BanCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:43:07.087004
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: 'NoneType' object is not callable
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:43:47.535186
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: 'NoneType' object is not callable
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:44:10.979520
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: 'NoneType' object is not callable
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:45:04.553845
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: 'NoneType' object is not callable
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:45:22.455504
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Commands.StaffCommands.BanCommand cannot be loaded. Error: 'NoneType' object is not callable
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:45:44.997870
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:46:09.505210
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:46:26.434040
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:46:50.653386
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:48:39.289993
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-16 17:48:56.026165
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:49:04.414935
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-16 17:49:23.058309
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!

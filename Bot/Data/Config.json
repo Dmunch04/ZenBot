@@ -1,5 +1,5 @@
 {
-  "Token": "NTYzODU4NjY5OTI2ODc1MTM4.XQX61Q.p-3NFI13dTzAFayzVXDh9LWzkNU",
+  "Token": "",
   "Invite": "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8",
   "Prefix": "!",
   "Description": "The official ZenBot",

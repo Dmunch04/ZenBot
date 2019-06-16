@@ -1,5 +1,5 @@
 # ZenBot
-*WORK IS STILL IN PROGRESS. STATUS: NOT WORKING*
+*WORK IS STILL IN PROGRESS. STATUS: WORKING PARTLY*
 
 This is the official repo for the ZenBot. Feel free to fork it, and work on it.
 The bot token can be changed in the `Config.py` file.
