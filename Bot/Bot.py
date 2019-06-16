@@ -1,3 +1,4 @@
+import json
 import logging
 
 import discord
@@ -24,7 +25,9 @@ class ZenBot (commands.Bot):
             max_messages = 10_000
         )
 
-        self.PluginDatabase = PluginDatabase (self)
+        # Setup the bot's database
+        self.Database = Database (self)
+        self.Database.PluginDatabase = PluginDatabase (self)
 
     @property
     def Prefix (self) -> str:
@@ -35,6 +38,12 @@ class ZenBot (commands.Bot):
         Allowed = { int (I) for I in Raw }
 
         return (_User.id in Allowed) or await super ().is_owner (_User)
+
+    async def LoadJsonFile (self, _Path):
+        with open (_Path, 'r') as File:
+            Data = json.loads (File.read ())
+
+        return Data
 
     async def LoadExtensions (self, _Folder: str = '', _Extensions: list, _Suffix: str = ''):
         for Extension in _Extensions:
