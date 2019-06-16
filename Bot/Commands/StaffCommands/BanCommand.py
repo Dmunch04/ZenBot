@@ -9,7 +9,7 @@ class BanCommand (commands.Cog):
     def __init__ (self, Client: discord.Client):
         self.Client = Client
 
-    #@HasPermission (PermissionLevel.Admin)
+    @HasPermission (PermissionLevel.Admin)
     @commands.command ()
     async def ban (self, ctx: commands.Context, _Members = commands.Greedy[discord.Member], _DeleteDays: int = 0, *, _Reason: str = 'The ban hammer has spoken!'):
         """ Bans 1 or more members """
@@ -22,7 +22,7 @@ class BanCommand (commands.Cog):
 
             await Server.ban (Member, delete_message_days = _DeleteDays, reason = _Reason)
 
-    #@HasPermission (PermissionLevel.Admin)
+    @HasPermission (PermissionLevel.Admin)
     @commands.command ()
     async def unban (self, ctx: commands.Context, _Members = commands.Greedy[discord.Member], _Reason: str = 'Welcome back!'):
         """ Unbans 1 or more members """
@@ -35,7 +35,7 @@ class BanCommand (commands.Cog):
             await Member.create_dm ()
             await Member.dm_channel.send (f'You have been unbanned from {Server} \nReason: {_Reason}')
 
-    #@HasPermission (PermissionLevel.Admin)
+    @HasPermission (PermissionLevel.Admin)
     @commands.command ()
     async def tempban (self, ctx: commands.Context, _Members = commands.Greedy[discord.Member], _DeleteDays: int = 0, _Days: int = 1, *, _Reason: str = 'The ban hammer has spoken!'):
         """ Temporarily bans 1 or more members """

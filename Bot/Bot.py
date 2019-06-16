@@ -27,7 +27,6 @@ class ZenBot (commands.Bot):
 
         # Setup the bot's database
         self.Database = Database (self)
-        self.Database.PluginRegestry = PluginDatabase (self)
 
     @property
     def Config (self) -> str:
