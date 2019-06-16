@@ -23,7 +23,9 @@ class Collection (dict):
             self.Add (_Value)
 
         else:
-            raise Logs.Error ('Item is not a collection or instance of')
+            Logs.Error ('Item is not a collection or instance of')
+
+            return None
 
     def __iadd__ (self, _Value):
         """ Adds support for using += on this """
@@ -36,6 +38,8 @@ class Collection (dict):
         if not isinstance (_Value, self.Instance):
             Logs.Error (f'{_Value} is not instance of {self.Instance}!')
 
+            return None
+
         dict.__setitem__ (self, _Key, _Value)
 
     async def Add (self, _Item):
@@ -43,6 +47,8 @@ class Collection (dict):
 
         if not isinstance (_Item, self.Instance):
             Logs.Error (f'{_Item} is not instance of {self.Instance}!')
+
+            return None
 
         Index = getattr (_Item, self.Index, None)
 
@@ -66,7 +72,7 @@ class Collection (dict):
         """ Removes an item from the collection, if something """
 
         for Key, Value in reversed (self.items ()):
-            if self.HasAttributes (_Value, **_Attributes):
+            if await self.HasAttributes (_Value, **_Attributes):
                 del self[Key]
 
     async def RemoveIndex (self, _Index: int):
@@ -74,7 +80,7 @@ class Collection (dict):
 
         del self[_Index]
 
-    async def HasAttributes (self, _Object, **_Attributes):
+    def HasAttributes (self, _Object, **_Attributes) -> bool:
         """ Checks if _Object has _Attributes """
 
         for Key, Value in _Attributes.items ():
@@ -107,14 +113,22 @@ class Collection (dict):
             if _Condition (Item):
                 return _Item
 
-    async def Get (self, _ID = None, **_Attributes):
-        """ Get an item from the collection by it's id, an attributes to filter """
+    async def Get (self, _ID: int):
+        """ Get an item from the collection by it's id, and attributes to filter """
 
-        _Attributes['ID'] = _ID or _Attributes.get ('ID')
-
-        return self.FindOne (lambda X: self.HasAttributes (X, **_Attributes))
+        return self[_ID]
 
     async def GetAll (self) -> list:
         """ Returns all the items in the collection as a list """
 
         return [self[Item] for Item in self]
+
+    async def Set (self, _ID: int, _Item):
+        """ Sets an item in the collection to a new item of same instance """
+
+        if not isinstance (_Item, self.Instance):
+            Logs.Error (f'{_Item} is not instance of {self.Instance}!')
+
+            return None
+
+        self[_ID] = _Item

@@ -2,6 +2,7 @@
 import json
 import logging
 import datetime
+from DavesLogger import Logs
 
 # Discord imports
 import discord
@@ -26,7 +27,7 @@ class ZenBot (commands.Bot):
 
         # Setup the bot's database
         self.Database = Database (self)
-        self.Database.PluginDatabase = PluginDatabase (self)
+        self.Database.PluginRegestry = PluginDatabase (self)
 
     @property
     def Config (self) -> str:
@@ -36,6 +37,10 @@ class ZenBot (commands.Bot):
     @property
     def DataPath (self) -> str:
         return self.Config.get ('DataPath', 'Data')
+
+    @property
+    def ServerPath (self) -> str:
+        return self.DataPath + '/Servers/{}'
 
     @property
     def Prefix (self) -> str:
@@ -49,25 +54,25 @@ class ZenBot (commands.Bot):
     def Status (self) -> str:
         return self.Config.get ('Status', 'Help - {}help')
 
-    async def IsOwner (self, _User: discord.User) -> bool:
-        Raw = str (self.Config.get ('Owners', '0')).split (',')
-        Allowed = { int (I) for I in Raw }
-
-        return (_User.id in Allowed) or await super ().is_owner (_User)
-
     def LoadJsonFile (self, _Path: str) -> dict:
+        """ Loads a JSON file, and returns it's content """
+
         with open (_Path, 'r') as File:
             Data = json.loads (File.read ())
 
         return Data
 
     def Log (self, _Text: str):
+        """ Writes text to the Logs file """
+
         with open ('Data/Log.txt', 'a') as Log:
             Text = str (_Text) + '\n'
 
             Log.write (Text)
 
     def LoadExtensions (self, _Folder: str = '', _Extensions: list = [], _Suffix: str = ''):
+        """ Loads a list of extensions """
+
         for Extension in _Extensions:
             Name = Extension.split ('.')[-1]
             Extension = f'{_Folder}.{Extension}{_Suffix}'
@@ -84,6 +89,8 @@ class ZenBot (commands.Bot):
                 self.Log (f'- {ErrorMessage}')
 
     def Run (self):
+        """ Run & Prepare the bot. And add some logs to the Logs file """
+
         self.Log ('--------------------')
         self.Log (f'Bot started at: {str (datetime.datetime.now ())}')
 

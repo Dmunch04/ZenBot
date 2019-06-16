@@ -10,6 +10,9 @@
   "Commands": [
     "DefaultCommands.Help",
     "OwnerCommands.Plugin",
+    "StaffCommands.Clear",
+    "StaffCommands.Mute",
+    "StaffCommands.Kick",
     "StaffCommands.Ban"
   ],
   "Modules": [
