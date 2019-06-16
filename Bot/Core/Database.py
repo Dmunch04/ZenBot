@@ -7,12 +7,12 @@ class Database:
         self.Client = Client
 
         self.PluginDatabase = None
-        await self.PopulatePluginDatabase ()
+        self.PopulatePluginDatabase ()
 
-    async def PopulatePluginDatabase (self):
+    def PopulatePluginDatabase (self):
         Path = self.Client.DataPath + '/Plugins.json'
 
-        Plugins = await self.Client.LoadJsonFile (Path)
+        Plugins = self.Client.LoadJsonFile (Path)
 
         self.PluginDatabase = Plugins
 

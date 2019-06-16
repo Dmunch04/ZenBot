@@ -1,8 +1,18 @@
 {
-  "Token": "",
+  "Token": "NTYzODU4NjY5OTI2ODc1MTM4.XQX61Q.p-3NFI13dTzAFayzVXDh9LWzkNU",
+  "Invite": "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8",
   "Prefix": "!",
   "Description": "The official ZenBot",
   "Status": "Help - {}help",
 
-  "Owners": []
+  "Owners": [],
+
+  "Commands": [
+    "DefaultCommands.Help",
+    "OwnerCommands.Plugin",
+    "StaffCommands.Ban"
+  ],
+  "Modules": [
+    "Events"
+  ]
 }

@@ -15,4 +15,4 @@ class BanCommand (commands.Cog):
             await Member.ban (delete_message_days = _DeleteDays, reason = _Reason)
 
 def setup (_Client):
-    _Client.add_cog (HelpCommand (_Client))
+    _Client.add_cog (BanCommand (_Client))

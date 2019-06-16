@@ -1,0 +1,16 @@
+--------------------
+Bot started at: 2019-06-16 10:54:41.948655
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+Bot is running!

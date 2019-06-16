@@ -2,11 +2,11 @@ import json
 
 import discord
 
-from Core import Plugin
+from Core.Plugins import Plugin
 from Utilities import Collection
 
 class Server:
-    def __init__ (self, Client, Server: discord.Server):
+    async def __init__ (self, Client: discord.Client, Server: discord.Guild):
         self.Client = Client
         self.Server = Server
 

@@ -1,7 +1,9 @@
+import discord
+
 from Utilities import Collection
 
 class Plugin:
-    def __init__ (self, Name, Version, Author, Description, BotVersion, Username, Repo, Branch):
+    def __init__ (self, Name: str, Version: str, Author: str, Description: str, BotVersion: str, Username: str, Repo: str, Branch: str):
         self.Name = Name
         self.Version = Version
         self.Author = Author
@@ -16,7 +18,7 @@ class Plugin:
         self.Command += f'-b {self.Branch} -q'
 
 class PluginDatabase:
-    def __init__ (self, Client):
+    def __init__ (self, Client: discord.Client):
         self.Client = Client
 
         self.Plugins = Collection (Plugin)

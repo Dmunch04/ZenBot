@@ -6,8 +6,8 @@ class HelpCommand (commands.Cog):
         self.Client = Client
 
     @commands.command ()
-    def help (self, ctx):
-        await ctx.send ()
+    async def help (self, ctx):
+        await ctx.send ('Help (Embed here)')
 
 def setup (_Client):
     _Client.add_cog (HelpCommand (_Client))

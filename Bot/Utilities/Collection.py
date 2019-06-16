@@ -69,7 +69,7 @@ class Collection (dict):
             if self.HasAttributes (_Value, **_Attributes):
                 del self[Key]
 
-    async def RemoveIndex (self, _Index):
+    async def RemoveIndex (self, _Index: int):
         """ Removes an item from the collection, by it's id """
 
         del self[_Index]
@@ -114,7 +114,7 @@ class Collection (dict):
 
         return self.FindOne (lambda X: self.HasAttributes (X, **_Attributes))
 
-    async def GetAll (self):
+    async def GetAll (self) -> list:
         """ Returns all the items in the collection as a list """
 
         return [self[Item] for Item in self]

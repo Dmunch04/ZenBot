@@ -8,7 +8,7 @@ class PluginCommand (commands.Cog):
 
     @commands.command (pass_context = True)
     @commands.is_owner ()
-    def install (self, ctx, *, _Plugin: str):
+    async def install (self, ctx, *, _Plugin: str):
         """ This command installs an official plugin to this server """
 
         _Plugin = str (_Plugin)
@@ -36,7 +36,7 @@ class PluginCommand (commands.Cog):
 
     @commands.command (pass_context = True)
     @commands.is_owner ()
-    def uninstall (self, ctx, *, _Plugin: str):
+    async def uninstall (self, ctx, *, _Plugin: str):
         """ This command uninstalls an official plugin from this server """
 
         Server = await self.Client.Database.GetServer (ctx.guild.id).Plugins
@@ -48,4 +48,4 @@ class PluginCommand (commands.Cog):
                 # Remove the folder
 
 def setup (_Client):
-    _Client.add_cog (PluginCommand (_Client))
+    _Client.add_cog (PluginCommand (_Client, _Client.Database))
