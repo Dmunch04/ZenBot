@@ -3,7 +3,7 @@ import asyncio
 import discord
 from discord.ext import commands
 
-from Bot.Core import PermissionLevel, HasPermission
+from Core import PermissionLevel, HasPermission
 
 class BanCommand (commands.Cog):
     def __init__ (self, Client: discord.Client):
@@ -18,9 +18,20 @@ class BanCommand (commands.Cog):
 
         for Member in _Members:
             await Member.create_dm ()
-            Embed=discord.Embed (title="You have been banned", description=f"You have been banned from {Server} for {_Reason}", color=0xff0000)
-            Embed.set_author (name=self.Client.name, url="https://dmunch04.github.io/ZenBot/",icon_url= self.Client.avatar_url)
-            await Member.dm_channel.send (embed=Embed)
+
+            Embed = discord.Embed (
+                title = 'You\'ve been banned!',
+                description = f'You\'ve been banned from {Server} for {_Reason}!',
+                color = 0xff0000
+            )
+            Embed.set_author (
+                name = self.Client.name,
+                url = self.Client.Website,
+                icon_url = self.Client.avatar_url
+            )
+
+            await Member.dm_channel.send (embed = Embed)
+
             await Server.ban (Member, delete_message_days = _DeleteDays, reason = _Reason)
 
     @HasPermission (PermissionLevel.Admin)
@@ -32,11 +43,26 @@ class BanCommand (commands.Cog):
 
         for Member in _Members:
             await Server.unban (Member, reason = _Reason)
+
             await Member.create_dm ()
-            Embed=discord.Embed (title="You have been unbanned", description=f"You have been unbanned from {Server} for {_Reason}", color=0xff0000)
-            Embed.set_author (name=self.Client.name, url="https://dmunch04.github.io/ZenBot/",icon_url= self.Client.avatar_url)
-            Embed.add_field(name='Join Back', value= f'To rejoin {Server}, [click here]({Server.invites()[0]} "{Server.name}"', inline=True)
-            await Member.dm_channel.send (embed=Embed)
+
+            Embed = discord.Embed (
+                title = 'You\'ve been unbanned!',
+                description = f'You\'ve been unbanned from {Server} for {_Reason}!',
+                color = 0xff0000
+            )
+            Embed.add_field (
+                name = 'Join Back',
+                value = f'To rejoin {Server}, [click here]({Server.invites ()[0]} \'{Server.name}\'',
+                inline = True
+            )
+            Embed.set_author (
+                name = self.Client.name,
+                url = self.Client.Website,
+                icon_url = self.Client.avatar_url
+            )
+
+            await Member.dm_channel.send (embed = Embed)
 
     @HasPermission (PermissionLevel.Admin)
     @commands.command ()

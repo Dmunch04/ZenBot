@@ -28,6 +28,8 @@ class ZenBot (commands.Bot):
         # Setup the bot's database
         self.Database = Database (self)
 
+        self.Website = 'http://zenbot.xyz/'
+
     @property
     def Config (self) -> str:
         with open ('Data/Config.json', 'r') as Config:
