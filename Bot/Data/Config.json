@@ -1,5 +1,5 @@
 {
-  "Token": "",
+  "Token": "NTU2NDM1NTMwNjI4MzMzNTY4.XOYmPg.oky77zRWSNG5FCd4ww9QnRJKBEw",
   "Invite": "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8",
   "Prefix": "!",
   "Description": "The official ZenBot",
@@ -13,7 +13,10 @@
     "StaffCommands.Clear",
     "StaffCommands.Mute",
     "StaffCommands.Kick",
-    "StaffCommands.Ban"
+    "StaffCommands.Ban",
+    "SearchCommands.Stock",
+    "SearchCommands.Crypto",
+    "SearchCommands.Google"
   ],
   "Modules": [
     "Events"

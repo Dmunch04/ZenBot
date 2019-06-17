@@ -8,7 +8,7 @@ class ClearCommand (commands.Cog):
         self.Client = Client
 
     @HasPermission (PermissionLevel.Moderator)
-    @commands.command ()
+    @commands.command (aliases = ['prune', 'clearchat'])
     async def clear (self, ctx: commands.Context, _Messages: int = 1):
         Channel = ctx.channel
         Sender = ctx.author
@@ -17,7 +17,7 @@ class ClearCommand (commands.Cog):
 
         Embed = discord.Embed (
             title = 'Chat Cleared!',
-            description = f'{Sender.mention} cleared {str (_Messages)} from this channel!'
+            description = f'{Sender.mention} cleared {str (_Messages)} messages from this channel!'
         )
         Embed.set_author (
             name = self.Client.user.name,
