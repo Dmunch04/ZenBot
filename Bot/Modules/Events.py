@@ -20,7 +20,10 @@ class Events (commands.Cog):
     async def on_message (self, _Message: str):
         # Do something here I guess
 
-        await self.Client.process_commands (_Message)
+        # Makes commands run twice
+        #await self.Client.process_commands (_Message)
+
+        pass
 
     @commands.Cog.listener ()
     async def on_error (self, _Error: str):

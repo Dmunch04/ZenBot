@@ -11,7 +11,7 @@ class MuteCommand (commands.Cog):
 
     @HasPermission (PermissionLevel.Moderator)
     @commands.command ()
-    async def mute (self, ctx: commands.Context, _Members = commands.Greedy[discord.Member], *, _Reason: str = 'You\'ve been muted!'):
+    async def mute (self, ctx: commands.Context, _Members: commands.Greedy[discord.Member], *, _Reason: str = 'You\'ve been muted!'):
         """ Mutes 1 or more members """
 
         Server = ctx.guild
@@ -23,6 +23,9 @@ class MuteCommand (commands.Cog):
 
             return None
 
+        if isinstance (_Members, discord.Member):
+            _Members = [_Members]
+
         for Member in _Members:
             await Member.create_dm ()
 
@@ -32,9 +35,9 @@ class MuteCommand (commands.Cog):
                 color = 0xff0000
             )
             Embed.set_author (
-                name = self.Client.name,
+                name = self.Client.user.name,
                 url = self.Client.Website,
-                icon_url = self.Client.avatar_url
+                icon_url = self.Client.user.avatar_url
             )
 
             await Member.dm_channel.send (embed = Embed)

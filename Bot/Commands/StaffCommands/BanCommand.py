@@ -11,10 +11,13 @@ class BanCommand (commands.Cog):
 
     @HasPermission (PermissionLevel.Admin)
     @commands.command ()
-    async def ban (self, ctx: commands.Context, _Members = commands.Greedy[discord.Member], _DeleteDays: int = 0, *, _Reason: str = 'The ban hammer has spoken!'):
+    async def ban (self, ctx: commands.Context, _Members: commands.Greedy[discord.Member], _DeleteDays: int = 0, *, _Reason: str = 'The ban hammer has spoken!'):
         """ Bans 1 or more members """
 
         Server = ctx.guild
+
+        if isinstance (_Members, discord.Member):
+            _Members = [_Members]
 
         for Member in _Members:
             await Member.create_dm ()
@@ -25,9 +28,9 @@ class BanCommand (commands.Cog):
                 color = 0xff0000
             )
             Embed.set_author (
-                name = self.Client.name,
+                name = self.Client.user.name,
                 url = self.Client.Website,
-                icon_url = self.Client.avatar_url
+                icon_url = self.Client.user.avatar_url
             )
 
             await Member.dm_channel.send (embed = Embed)
@@ -36,10 +39,13 @@ class BanCommand (commands.Cog):
 
     @HasPermission (PermissionLevel.Admin)
     @commands.command ()
-    async def unban (self, ctx: commands.Context, _Members = commands.Greedy[discord.Member], _Reason: str = 'Welcome back!'):
+    async def unban (self, ctx: commands.Context, _Members: commands.Greedy[discord.Member], _Reason: str = 'Welcome back!'):
         """ Unbans 1 or more members """
 
         Server = ctx.guild
+
+        if isinstance (_Members, discord.Member):
+            _Members = [_Members]
 
         for Member in _Members:
             await Server.unban (Member, reason = _Reason)
@@ -57,19 +63,22 @@ class BanCommand (commands.Cog):
                 inline = True
             )
             Embed.set_author (
-                name = self.Client.name,
+                name = self.Client.user.name,
                 url = self.Client.Website,
-                icon_url = self.Client.avatar_url
+                icon_url = self.Client.user.avatar_url
             )
 
             await Member.dm_channel.send (embed = Embed)
 
     @HasPermission (PermissionLevel.Admin)
     @commands.command ()
-    async def tempban (self, ctx: commands.Context, _Members = commands.Greedy[discord.Member], _DeleteDays: int = 0, _Days: int = 1, *, _Reason: str = 'The ban hammer has spoken!'):
+    async def tempban (self, ctx: commands.Context, _Members: commands.Greedy[discord.Member], _DeleteDays: int = 0, _Days: int = 1, *, _Reason: str = 'The ban hammer has spoken!'):
         """ Temporarily bans 1 or more members """
 
         Server = ctx.guild
+
+        if isinstance (_Members, discord.Member):
+            _Members = [_Members]
 
         for Member in _Members:
             await Member.create_dm ()

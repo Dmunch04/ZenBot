@@ -10,22 +10,22 @@ class ClearCommand (commands.Cog):
     @HasPermission (PermissionLevel.Moderator)
     @commands.command ()
     async def clear (self, ctx: commands.Context, _Messages: int = 1):
-        Sender = ctx.author
         Channel = ctx.channel
+        Sender = ctx.author
 
         await Channel.purge (limit = _Messages)
 
         Embed = discord.Embed (
             title = 'Chat Cleared!',
-            description = f'{Sender} cleared {str (_Messages)} from this channel!'
+            description = f'{Sender.mention} cleared {str (_Messages)} from this channel!'
         )
         Embed.set_author (
-            name = self.Client.name,
+            name = self.Client.user.name,
             url = self.Client.Website,
-            icon_url = self.Client.avatar_url
+            icon_url = self.Client.user.avatar_url
         )
 
-        await ctx.send ()
+        await ctx.send (embed = Embed)
 
 def setup (_Client):
     _Client.add_cog (ClearCommand (_Client))

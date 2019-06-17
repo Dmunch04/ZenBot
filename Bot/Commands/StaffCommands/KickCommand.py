@@ -9,10 +9,14 @@ class KickCommand (commands.Cog):
 
     @HasPermission (PermissionLevel.Moderator)
     @commands.command ()
-    async def kick (self, ctx = commands.Context, _Members = commands.Greedy[discord.Member], *, _Reason : str = "The Boot has spoken"):
+    async def kick (self, ctx: commands.Context, _Members: commands.Greedy[discord.Member], *, _Reason: str = 'You\'ve been kicked!'):
         """ Kicks 1 or more members """
 
         Server = ctx.guild
+        Invites = await Server.invites ()
+
+        if isinstance (_Members, discord.Member):
+            _Members = [_Members]
 
         for Member in _Members:
             await Member.create_dm ()
@@ -24,13 +28,13 @@ class KickCommand (commands.Cog):
             )
             Embed.add_field (
                 name = 'Join Back',
-                value = f'To rejoin {Server}, [click here]({Server.invites ()[0]} \'{Server.name}\'',
+                value = f'To rejoin {Server}, [click here]({Invites[0].url} "{Server.name}")',
                 inline = True
             )
             Embed.set_author (
-                name = self.Client.name,
+                name = self.Client.user.name,
                 url = self.Client.Website,
-                icon_url = self.Client.avatar_url
+                icon_url = self.Client.user.avatar_url
             )
 
             await Member.dm_channel.send (embed = Embed)
