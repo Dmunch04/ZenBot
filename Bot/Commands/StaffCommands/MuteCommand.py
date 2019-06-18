@@ -30,7 +30,7 @@ class MuteCommand (commands.Cog):
             await Embed.DMEmbed (
                 'You\'ve been muted!',
                 f'You\'ve been muted from {Server} for {_Reason}!',
-                0xff0000,
+                discord.Color.red (),
                 Member,
                 self.Client
             )

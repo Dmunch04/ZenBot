@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 
+from Helpers import EmbedHelper as Embed
 from Core import PermissionLevel, HasPermission
 
 class ClearCommand (commands.Cog):
@@ -15,17 +16,13 @@ class ClearCommand (commands.Cog):
 
         await Channel.purge (limit = _Messages)
 
-        Embed = discord.Embed (
-            title = 'Chat Cleared!',
-            description = f'{Sender.mention} cleared {str (_Messages)} messages from this channel!'
+        await Embed.Embed (
+            'Chat Cleared!',
+            f'{Sender.mention} cleared {str (_Messages)} messages from this channel!',
+            discord.Color.purple (),
+            Channel,
+            self.Client
         )
-        Embed.set_author (
-            name = self.Client.user.name,
-            url = self.Client.Website,
-            icon_url = self.Client.user.avatar_url
-        )
-
-        await ctx.send (embed = Embed)
 
 def setup (_Client):
     _Client.add_cog (ClearCommand (_Client))

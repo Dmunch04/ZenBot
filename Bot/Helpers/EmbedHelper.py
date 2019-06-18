@@ -18,10 +18,11 @@ async def Embed (_Title: str, _Content: str, _Color, _Channel: discord.TextChann
         for Field in _Fields:
             Embed.add_field (
                 name = Field[0],
-                value = Field[1]
+                value = Field[1],
+                inline = False
             )
 
-    _Channel.send (embed = Embed)
+    await _Channel.send (embed = Embed)
 
 async def DMEmbed (_Title: str, _Content: str, _Color, _Member: discord.Member, _Client: discord.Client = None, _Fields: list = []):
     Embed = discord.Embed (

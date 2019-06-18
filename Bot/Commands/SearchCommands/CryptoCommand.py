@@ -1,4 +1,4 @@
-from cryptocompare import get_price
+import cryptocompare
 
 import discord
 from discord.ext import commands
@@ -9,17 +9,16 @@ class CryptoCommand (commands.Cog):
     def __init__ (self, Client : discord.Client):
         self.Client = Client
 
-    @commands.command (aliases = ['cryptocurrency', 'cryptoprice'])
+    @commands.command ()
     async def crypto (self, ctx: commands.Context, _Ticker: str):
         Channel = ctx.channel
 
-        Price = get_price (_Ticker, curr = 'USD')[_Ticker]['USD']
+        Price = cryptocompare.get_price (_Ticker, curr = 'USD')[_Ticker]['USD']
 
         await Embed.Embed (
-            self.Client,
-            f'Cryptocurrency Info: {_Ticker}',
-            f'{_Ticker} current price: ${Price}'
-            discord.Color.black (),
+            f'Cryptocurrency info of: {_Ticker}',
+            f'{_Ticker} current price: ${Price}',
+            discord.Color.blue (),
             Channel,
             self.Client
         )

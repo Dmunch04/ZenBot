@@ -22,7 +22,7 @@ class KickCommand (commands.Cog):
             await Embed.DMEmbed (
                 'You\'ve been kicked!',
                 f'You\'ve been kicked from {Server} for {_Reason}!',
-                0xff0000,
+                discord.Color.red (),
                 Member,
                 self.Client,
                 [

@@ -24,7 +24,7 @@ class BanCommand (commands.Cog):
             await Embed.DMEmbed (
                 'You\'ve been banned!',
                 f'You\'ve been banned from {Server} for {_Reason}!',
-                0xff0000,
+                discord.Color.red (),
                 Member,
                 self.Client
             )
@@ -44,25 +44,13 @@ class BanCommand (commands.Cog):
         for Member in _Members:
             await Server.unban (Member, reason = _Reason)
 
-            await Member.create_dm ()
-
-            Embed = discord.Embed (
-                title = 'You\'ve been unbanned!',
-                description = f'You\'ve been unbanned from {Server} for {_Reason}!',
-                color = 0xff0000
+            await Embed.DMEmbed (
+                'You\'ve been unbanned!',
+                f'You\'ve been unbanned from {Server} for {_Reason}!',
+                discord.Color.green (),
+                Member,
+                self.Client
             )
-            Embed.add_field (
-                name = 'Join Back',
-                value = f'To rejoin {Server}, [click here]({Server.invites ()[0]} \'{Server.name}\'',
-                inline = True
-            )
-            Embed.set_author (
-                name = self.Client.user.name,
-                url = self.Client.Website,
-                icon_url = self.Client.user.avatar_url
-            )
-
-            await Member.dm_channel.send (embed = Embed)
 
     @HasPermission (PermissionLevel.Admin)
     @commands.command ()

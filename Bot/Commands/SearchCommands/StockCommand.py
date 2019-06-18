@@ -14,9 +14,9 @@ class StockCommand (commands.Cog):
         Channel = ctx.channel
 
         await Embed.Embed (
-            f'Stock Info: {_Ticker}',
+            f'Stock info of: {_Ticker}',
             f'{_Ticker} current price: ${round (get_live_price (_Ticker), 2)}',
-            discord.Color.black ()
+            discord.Color.blue (),
             Channel,
             self.Client
         )
