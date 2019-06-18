@@ -19,25 +19,16 @@ class KickCommand (commands.Cog):
             _Members = [_Members]
 
         for Member in _Members:
-            await Member.create_dm ()
-
-            Embed = discord.Embed (
-                title = 'You have been kicked!',
-                description = f'You have been kicked from {Server} for {_Reason}!',
-                color = 0xff0000
+            await Embed.DMEmbed (
+                'You\'ve been kicked!',
+                f'You\'ve been kicked from {Server} for {_Reason}!',
+                0xff0000,
+                Member,
+                self.Client,
+                [
+                    ('Join Back', f'To rejoin {Server}, [click here]({Invites[0].url} "{Server.name}")')
+                ]
             )
-            Embed.add_field (
-                name = 'Join Back',
-                value = f'To rejoin {Server}, [click here]({Invites[0].url} "{Server.name}")',
-                inline = True
-            )
-            Embed.set_author (
-                name = self.Client.user.name,
-                url = self.Client.Website,
-                icon_url = self.Client.user.avatar_url
-            )
-
-            await Member.dm_channel.send (embed = Embed)
 
             await Server.kick (Member, reason = _Reason)
 
