@@ -3,6 +3,7 @@ import asyncio
 import discord
 from discord.ext import commands
 
+from Helpers import EmbedHelper as Embed
 from Core import PermissionLevel, HasPermission
 
 class BanCommand (commands.Cog):
@@ -20,20 +21,13 @@ class BanCommand (commands.Cog):
             _Members = [_Members]
 
         for Member in _Members:
-            await Member.create_dm ()
-
-            Embed = discord.Embed (
-                title = 'You\'ve been banned!',
-                description = f'You\'ve been banned from {Server} for {_Reason}!',
-                color = 0xff0000
+            await Embed.DMEmbed (
+                'You\'ve been banned!',
+                f'You\'ve been banned from {Server} for {_Reason}!',
+                0xff0000,
+                Member,
+                self.Client
             )
-            Embed.set_author (
-                name = self.Client.user.name,
-                url = self.Client.Website,
-                icon_url = self.Client.user.avatar_url
-            )
-
-            await Member.dm_channel.send (embed = Embed)
 
             await Server.ban (Member, delete_message_days = _DeleteDays, reason = _Reason)
 
