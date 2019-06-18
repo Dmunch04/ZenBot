@@ -18,17 +18,20 @@ class DictionaryCommand (commands.Cog):
 
         Dictionary = PyDictionary ()
         Definitions = Dictionary.meaning (_Search)
-        Definition = Definitions[list (Definitions)[0]]
+        DefinitionList = []
         
-        if isinstance (Definition, list) and len (Definition) > 1:
-            Definition = Definition[0]
+        if isinstance (Definitions, dict):
+            for fos in Definitions:
+                DefinitionList.append([fos, Definitions[fos][0]])
+                
 
         await Embed.Embed (
             f'Definition of: {_Search}',
-            Definition,
+            '',
             discord.Color.blue (),
             Channel,
-            self.Client
+            self.Client,
+            _Fields = DefinitionList
         )
 
     @commands.command (aliases = ['syn'])
