@@ -4,6 +4,7 @@ DavesLogger
 fuzzywuzzy
 googletrans
 pandas
+pydictionary
 requests
 stackapi
 yahoo_fin

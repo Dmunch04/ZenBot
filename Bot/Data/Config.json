@@ -16,7 +16,8 @@
     "StaffCommands.Ban",
     "SearchCommands.Stock",
     "SearchCommands.Crypto",
-    "SearchCommands.Google"
+    "SearchCommands.Google",
+    "SearchCommands.Dictionary"
   ],
   "Modules": [
     "Events"
