@@ -19,3 +19,110 @@ Running bot...
 
 
 Bot is running!
+--------------------
+Bot started at: 2019-06-18 21:03:25.506993
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-18 21:14:28.142920
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-18 21:16:40.824925
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-18 21:20:34.448154
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!

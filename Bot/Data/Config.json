@@ -1,5 +1,5 @@
 {
-  "Token": "NTU2NDM1NTMwNjI4MzMzNTY4.XOYmPg.oky77zRWSNG5FCd4ww9QnRJKBEw",
+  "Token": "",
   "Invite": "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8",
   "Prefix": "!",
   "Description": "The official ZenBot",
@@ -9,14 +9,16 @@
 
   "Commands": [
     "DefaultCommands.Help",
+    "DefaultCommands.Stock",
+    "DefaultCommands.Crypto",
+    "DefaultCommands.Translate",
     "OwnerCommands.Plugin",
-    "StaffCommands.Clear",
-    "StaffCommands.Mute",
-    "StaffCommands.Kick",
     "StaffCommands.Ban",
-    "SearchCommands.Stock",
-    "SearchCommands.Crypto",
+    "StaffCommands.Kick",
+    "StaffCommands.Mute",
+    "StaffCommands.Clear",
     "SearchCommands.Google",
+    "SearchCommands.SoundCloud",
     "SearchCommands.Dictionary"
   ],
   "Modules": [

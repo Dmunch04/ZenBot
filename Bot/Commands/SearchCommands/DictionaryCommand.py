@@ -1,84 +1,72 @@
 import nltk
-nltk.download('wordnet')
+nltk.download ('wordnet')
 from nltk.corpus import wordnet
 from PyDictionary import PyDictionary
 
 import discord
 from discord.ext import commands
 
+from Helpers import EmbedHelper as Embed
+
 class DictionaryCommand (commands.Cog):
-    def __init__ (self, Client : discord.Client):
+    def __init__ (self, Client: discord.Client):
         self.Client = Client
-    
+
     @commands.command (aliases = ['dict', 'meaning'])
-    async def dictionary (self, ctx : commands.Context, *, _Query : str):
-        Dictionary = PyDictionary()
+    async def dictionary (self, ctx: commands.Context, *, _Search: str):
+        Channel = ctx.channel
 
-        Definitions = Dictionary.meaning(_Query)
+        Dictionary = PyDictionary ()
+        Definitions = Dictionary.meaning (_Search)
+        Definition = Definitions[list (Definitions)[0]]
+        
+        if isinstance (Definition, list) and len (Definition) > 1:
+            Definition = Definition[0]
 
-
-        Embed = discord.Embed (
-            title = f'Definition of: **{_Query}**',
-            description = f''
+        await Embed.Embed (
+            f'Definition of: {_Search}',
+            Definition,
+            discord.Color.blue (),
+            Channel,
+            self.Client
         )
-        Embed.set_author (
-            name = self.Client.user.name,
-            url = self.Client.Website,
-            icon_url = self.Client.user.avatar_url
-        )
-
-        for key in Definitions:
-            for definition in Definitions[key]:
-                Embed.add_field (
-                name = f'**{key}**',
-                value = definition,
-                inline = False
-            )
-            
-        await ctx.send(embed = Embed)
 
     @commands.command (aliases = ['syn'])
-    async def synonym (self, ctx : commands.Context, *, _Query : str): 
-        Synonyms = ''
+    async def synonym (self, ctx: commands.Context, *, _Search: str):
+        Channel = ctx.channel
 
-        for syn in wordnet.synsets(_Query):
-            for l in syn.lemmas():
-                Synonyms += f'{l.name()}\n'
+        Synonyms = []
 
-        Embed = discord.Embed (
-            title = f'Synonyms of: **{_Query}**',
-            description = f'{Synonyms}'
+        for Synonym in wordnet.synsets (_Search):
+            for Lemma in Synonym.lemmas ():
+                Synonyms.append (Lemma.name ())
+
+        await Embed.Embed (
+            f'Synonym of: {_Search}',
+            str (Synonyms[0]),
+            discord.Color.blue (),
+            Channel,
+            self.Client
         )
-        Embed.set_author (
-            name = self.Client.user.name,
-            url = self.Client.Website,
-            icon_url = self.Client.user.avatar_url
-        )
-            
-        await ctx.send(embed = Embed)
 
     @commands.command (aliases = ['ant'])
-    async def antonym (self, ctx : commands.Context, *, _Query : str):
-        Antonyms = ''
+    async def antonym (self, ctx: commands.Context, *, _Search: str):
+        Channel = ctx.channel
 
-        for syn in wordnet.synsets(_Query):
-            for l in syn.lemmas():
-                if l.antonyms():
-                    Antonyms += f'{l.antonyms()[0].name()}\n'
+        Antonyms = []
 
-        Embed = discord.Embed (
-            title = f'Antonyms of: **{_Query}**',
-            description = f'{Antonyms}'
+        for Synonym in wordnet.synsets (_Search):
+            for Lemma in Synonym.lemmas ():
+                if Lemma.antonyms ():
+                    Antonyms.append (Lemma.antonyms ()[0].name ())
+
+        await Embed.Embed (
+            f'Antonym of: {_Search}',
+            str (Antonyms[0]),
+            discord.Color.blue (),
+            Channel,
+            self.Client
         )
-        Embed.set_author (
-            name = self.Client.user.name,
-            url = self.Client.Website,
-            icon_url = self.Client.user.avatar_url
-        )
-            
-        await ctx.send(embed = Embed)
-
-
 
 def setup (_Client):
-    _Client.add_cog( DictionaryCommand(_Client))
+    _Client.add_cog (DictionaryCommand (_Client))
