@@ -19,7 +19,8 @@
     "StaffCommands.Clear",
     "SearchCommands.Google",
     "SearchCommands.SoundCloud",
-    "SearchCommands.Dictionary"
+    "SearchCommands.Dictionary",
+    "SearchCommands.UrbanDictionary"
   ],
   "Modules": [
     "Events"

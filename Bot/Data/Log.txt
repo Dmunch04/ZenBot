@@ -126,3 +126,334 @@ Running bot...
 
 
 Bot is running!
+--------------------
+Bot started at: 2019-06-19 06:51:29.447718
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-19 06:52:28.266534
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-19 06:53:37.813206
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-19 06:54:48.731749
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-19 06:57:17.146134
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-19 06:57:46.524772
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary cannot be loaded. Error: invalid syntax (UrbanDictionaryCommand.py, line 36)
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-19 06:58:01.180661
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-19 06:59:48.515361
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-19 07:01:09.520410
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-19 07:01:55.527363
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-19 07:02:56.976565
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-19 07:03:13.928447
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary cannot be loaded. Error: Extension 'Commands.SearchCommands.DictionaryCommand' could not be loaded.
+- UrbanDictionary was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
