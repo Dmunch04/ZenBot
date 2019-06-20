@@ -2370,3 +2370,95 @@ Running bot...
 
 
 Bot is running!
+--------------------
+Bot started at: 2019-06-20 12:05:59.057745
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Support was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Setting was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary was successfully loaded!
+- UrbanDictionary was successfully loaded!
+- PCPartPicker was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+--------------------
+Bot started at: 2019-06-20 12:06:50.452776
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Support was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Setting was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary was successfully loaded!
+- UrbanDictionary was successfully loaded!
+- PCPartPicker was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!
+--------------------
+Bot started at: 2019-06-20 12:10:15.284420
+Removed help command!
+
+Loading commands...
+- Help was successfully loaded!
+- Stock was successfully loaded!
+- Crypto was successfully loaded!
+- Support was successfully loaded!
+- Translate was successfully loaded!
+- Plugin was successfully loaded!
+- Setting was successfully loaded!
+- Ban was successfully loaded!
+- Kick was successfully loaded!
+- Mute was successfully loaded!
+- Clear was successfully loaded!
+- Google was successfully loaded!
+- SoundCloud was successfully loaded!
+- Dictionary was successfully loaded!
+- UrbanDictionary was successfully loaded!
+- PCPartPicker was successfully loaded!
+
+
+Loading Modules...
+- Events was successfully loaded!
+
+
+Running bot...
+
+
+Bot is running!

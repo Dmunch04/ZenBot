@@ -22,7 +22,8 @@
     "SearchCommands.Google",
     "SearchCommands.SoundCloud",
     "SearchCommands.Dictionary",
-    "SearchCommands.UrbanDictionary"
+    "SearchCommands.UrbanDictionary",
+    "SearchCommands.PCPartPicker"
   ],
   "Modules": [
     "Events"
