@@ -13,7 +13,7 @@ class SettingCommand (commands.Cog):
         Server = ctx.guild
 
         ServerInstance = await self.Client.Database.GetServer (Server.id)
-        await ServerInstance.Set (_Type, _Sub, _Value)
+        await ServerInstance.Set (ctx, self.Client, _Type, _Sub, _Value)
 
     @commands.command ()
     @commands.is_owner ()
