@@ -1,7 +1,7 @@
 # Run me with: "sh Run.sh" in a terminal in this folder!
 
 # Install the requirements for the bot
-pip3 install -r requirements.txt
+#pip3 install -r requirements.txt
 
 # Cd into the bot folder
 cd Bot

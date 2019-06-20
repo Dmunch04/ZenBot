@@ -3,6 +3,7 @@ import urbandictionary as urban
 import discord
 from discord.ext import commands
 
+from Core import CommandEnabled
 from Helpers import EmbedHelper as Embed
 
 class UrbanDictionaryCommand (commands.Cog):
@@ -10,6 +11,7 @@ class UrbanDictionaryCommand (commands.Cog):
         self.Client = Client
 
     @commands.command (aliases = ['urban', 'urbandict'])
+    @commands.check (CommandEnabled)
     async def urbandictionary (self, ctx: commands.Context, *, _Search: str):
         Channel = ctx.channel
 
@@ -38,6 +40,7 @@ class UrbanDictionaryCommand (commands.Cog):
         )
 
     @commands.command (aliases = ['urbandef', 'udef'])
+    @commands.check (CommandEnabled)
     async def urbandefinition (self, ctx: commands.Context, *, _Search: str):
         Channel = ctx.channel
 

@@ -5,6 +5,7 @@ import soundcloud
 import discord
 from discord.ext import commands
 
+from Core import CommandEnabled
 from Helpers import EmbedHelper as Embed
 
 class SoundCloudCommand (commands.Cog):
@@ -12,6 +13,7 @@ class SoundCloudCommand (commands.Cog):
         self.Client = Client
 
     @commands.command ()
+    @commands.check (CommandEnabled)
     async def soundcloud (self, ctx: commands.Context, *, _Search: str):
         Channel = ctx.channel
 

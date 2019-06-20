@@ -3,6 +3,7 @@ import cryptocompare
 import discord
 from discord.ext import commands
 
+from Core import CommandEnabled
 from Helpers import EmbedHelper as Embed
 
 class CryptoCommand (commands.Cog):
@@ -10,6 +11,7 @@ class CryptoCommand (commands.Cog):
         self.Client = Client
 
     @commands.command ()
+    @commands.check (CommandEnabled)
     async def crypto (self, ctx: commands.Context, _Ticker: str):
         Channel = ctx.channel
 

@@ -3,6 +3,7 @@ import googletrans
 import discord
 from discord.ext import commands
 
+from Core import CommandEnabled
 from Helpers import EmbedHelper as Embed
 
 class TranslateCommand (commands.Cog):
@@ -10,6 +11,7 @@ class TranslateCommand (commands.Cog):
         self.Client = Client
 
     @commands.command (aliases = ['trans'])
+    @commands.check (CommandEnabled)
     async def translate (self, ctx: commands.Context, _From: str = 'en', _To: str = 'en', *, _Text: str):
         Channel = ctx.channel
 

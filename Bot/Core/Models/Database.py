@@ -27,6 +27,6 @@ class Database:
         self.PluginRegestry = Plugins
 
     async def GetServer (self, _ID: int) -> Server:
-        ServerToReturn = self.Client.get_guild (_ID)
+        Server = await self.Servers.Get (_ID)
 
-        return Server (self.Client, ServerToReturn)
+        return Server

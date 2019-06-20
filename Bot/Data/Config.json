@@ -1,5 +1,5 @@
 {
-  "Token": "",
+  "Token": "NTU2NDM1NTMwNjI4MzMzNTY4.XQk5JQ.UXaDt4lTarXRfOk-uwZ1KpmX0Co",
   "Invite": "https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8",
   "Prefix": "!",
   "Description": "The official ZenBot",
@@ -13,6 +13,7 @@
     "DefaultCommands.Crypto",
     "DefaultCommands.Translate",
     "OwnerCommands.Plugin",
+    "OwnerCommands.Setting",
     "StaffCommands.Ban",
     "StaffCommands.Kick",
     "StaffCommands.Mute",

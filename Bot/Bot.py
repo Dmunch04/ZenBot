@@ -63,6 +63,12 @@ class ZenBot (commands.Bot):
 
         return Data
 
+    def WriteJsonFile (self, _Path: str, _Data: dict) -> None:
+        """ Writes a dict of data to a file """
+
+        with open (_Path, 'w+') as File:
+            File.write (json.dumps (_Data))
+
     def Log (self, _Text: str):
         """ Writes text to the Logs file """
 

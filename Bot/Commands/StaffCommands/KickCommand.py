@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from Core import PermissionLevel, HasPermission
+from Core import PermissionLevel, HasPermission, CommandEnabled
 
 class KickCommand (commands.Cog):
     def __init__ (self, Client: discord.Client):
@@ -9,6 +9,7 @@ class KickCommand (commands.Cog):
 
     @HasPermission (PermissionLevel.Moderator)
     @commands.command ()
+    @commands.check (CommandEnabled)
     async def kick (self, ctx: commands.Context, _Members: commands.Greedy[discord.Member], *, _Reason: str = 'You\'ve been kicked!'):
         """ Kicks 1 or more members """
 

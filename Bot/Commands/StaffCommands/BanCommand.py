@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 
 from Helpers import EmbedHelper as Embed
-from Core import PermissionLevel, HasPermission
+from Core import PermissionLevel, CommandEnabled, HasPermission
 
 class BanCommand (commands.Cog):
     def __init__ (self, Client: discord.Client):
@@ -12,6 +12,7 @@ class BanCommand (commands.Cog):
 
     @HasPermission (PermissionLevel.Admin)
     @commands.command ()
+    @commands.check (CommandEnabled)
     async def ban (self, ctx: commands.Context, _Members: commands.Greedy[discord.Member], _DeleteDays: int = 0, *, _Reason: str = 'The ban hammer has spoken!'):
         """ Bans 1 or more members """
 

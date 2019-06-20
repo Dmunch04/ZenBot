@@ -3,7 +3,7 @@ from DavesLogger import Logs
 import discord
 from discord.ext import commands
 
-from Core import PermissionLevel, HasPermission
+from Core import PermissionLevel, HasPermission, CommandEnabled
 
 class MuteCommand (commands.Cog):
     def __init__ (self, Client: discord.Client):
@@ -11,6 +11,7 @@ class MuteCommand (commands.Cog):
 
     @HasPermission (PermissionLevel.Moderator)
     @commands.command ()
+    @commands.check (CommandEnabled)
     async def mute (self, ctx: commands.Context, _Members: commands.Greedy[discord.Member], *, _Reason: str = 'You\'ve been muted!'):
         """ Mutes 1 or more members """
 

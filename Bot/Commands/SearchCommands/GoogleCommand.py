@@ -3,6 +3,7 @@ from google.google import search
 import discord
 from discord.ext import commands
 
+from Core import CommandEnabled
 from Helpers import URLFinder as URL
 from Helpers import EmbedHelper as Embed
 
@@ -11,6 +12,7 @@ class GoogleCommand (commands.Cog):
         self.Client = Client
 
     @commands.command ()
+    @commands.check (CommandEnabled)
     async def google (self, ctx : commands.Context, *, _Search: str):
         Channel = ctx.channel
 

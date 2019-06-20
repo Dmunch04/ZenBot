@@ -6,6 +6,7 @@ from PyDictionary import PyDictionary
 import discord
 from discord.ext import commands
 
+from Core import CommandEnabled
 from Helpers import EmbedHelper as Embed
 
 class DictionaryCommand (commands.Cog):
@@ -13,6 +14,7 @@ class DictionaryCommand (commands.Cog):
         self.Client = Client
 
     @commands.command (aliases = ['dict', 'meaning'])
+    @commands.check (CommandEnabled)
     async def dictionary (self, ctx: commands.Context, *, _Search: str):
         Channel = ctx.channel
 
@@ -33,6 +35,7 @@ class DictionaryCommand (commands.Cog):
         )
 
     @commands.command (aliases = ['syn'])
+    @commands.check (CommandEnabled)
     async def synonym (self, ctx: commands.Context, *, _Search: str):
         Channel = ctx.channel
 
@@ -51,6 +54,7 @@ class DictionaryCommand (commands.Cog):
         )
 
     @commands.command (aliases = ['ant'])
+    @commands.check (CommandEnabled)
     async def antonym (self, ctx: commands.Context, *, _Search: str):
         Channel = ctx.channel
 

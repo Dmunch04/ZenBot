@@ -1,3 +1,4 @@
+import json
 import logging
 
 import discord
@@ -69,3 +70,16 @@ async def CheckPermission (ctx: commands.Context, _CommandName: str, _Permission
                 return True
 
     return False
+
+async def CommandEnabled (ctx: commands.Context) -> bool:
+    with open (f'Data/Servers/{ctx.guild.id}/Server.json', 'r') as Config:
+        Data = json.loads (Config.read ())
+
+    CommandName = ctx.command.qualified_name
+
+    Result = False
+    for Command in Data['Commands']:
+        if CommandName.lower () == Command.lower ():
+            Result = Data['Commands'][Command]
+
+    return Result

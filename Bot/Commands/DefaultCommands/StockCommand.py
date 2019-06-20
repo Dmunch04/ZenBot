@@ -3,6 +3,7 @@ from yahoo_fin.stock_info import get_live_price
 import discord
 from discord.ext import commands
 
+from Core import CommandEnabled
 from Helpers import EmbedHelper as Embed
 
 class StockCommand (commands.Cog):
@@ -10,6 +11,7 @@ class StockCommand (commands.Cog):
         self.Client = Client
 
     @commands.command (aliases = ['stockprice', 'stocks'])
+    @commands.check (CommandEnabled)
     async def stock (self, ctx: commands.Context, _Ticker: str):
         Channel = ctx.channel
 
