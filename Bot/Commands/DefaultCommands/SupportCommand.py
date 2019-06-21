@@ -27,7 +27,7 @@ class SupportCommand (commands.Cog):
 
         #Category = await ServerInstance.Instance.create_category ('Supports')
 
-        Channel = await ServerInstance.Instance.create_text_channel (Name)
+        Channel = await ServerInstance.Instance.create_text_channel (Name, overwrites = Overwrites)
         await Embed.Embed (
             'Support channel!',
             'A new support ticket has been opened!',
