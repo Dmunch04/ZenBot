@@ -8,8 +8,8 @@ pydictionary
 requests
 stackapi
 yahoo_fin
-git+git://github.com/Rapptz/discord.py.git
-git+https://github.com/abenassi/Google-Search-API
+discord.py
+git+https://github.com/abenassi/Google-Search-API.git
 git+git://github.com/soundcloud/soundcloud-python.git
 git+git://github.com/bocong/urbandictionary-py.git
 git+git://github.com/lucasdnd/Wikipedia.git
