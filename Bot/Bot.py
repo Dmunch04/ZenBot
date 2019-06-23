@@ -10,7 +10,7 @@ from discord.ext import commands
 
 # File/Function imports
 from Core import PluginDatabase, Database, PermissionLevel
-from Helpers import misc
+from Helpers import Prefix
 
 Log = logging.getLogger ('ZenBot')
 
@@ -19,9 +19,9 @@ class ZenBot (commands.Bot):
 
     def __init__ (self):
         super ().__init__ (
-            command_prefix = misc.get_prefix,
+            command_prefix = Prefix.GetPrefix,
             description = self.Description,
-            activity = discord.Game (name = self.Status.format (self.Prefix)),
+            activity = discord.Game (name = self.Status.format (Prefix.GetPrefix)),
             case_insensitive = True,
             max_messages = 10_000
         )
