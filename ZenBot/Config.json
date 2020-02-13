@@ -1,0 +1,24 @@
+{
+  "Token": "",
+  "Invite": "",
+  "Description": "The official ZenBot",
+  "Status": "Help: {}help",
+
+  "Database": {
+    "Host": "",
+    "Port": "",
+    "DatabaseName": "",
+    "Username": "",
+    "Password": ""
+  },
+
+  "Modules": {
+    "Commands": [
+      "Help"
+    ],
+
+    "Plugins": [
+
+    ]
+  }
+}

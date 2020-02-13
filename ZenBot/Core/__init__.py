@@ -1,0 +1,1 @@
+from Core.Check import HasPermission, CommandEnabled

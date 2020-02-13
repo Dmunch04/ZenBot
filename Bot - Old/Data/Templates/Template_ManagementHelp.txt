@@ -1,3 +1,0 @@
-{
-  "set <Type> <*SubType> <Value>": "Changes a setting"
-}
