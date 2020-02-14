@@ -27,7 +27,7 @@ class ZenBot (commands.Bot):
             self.DBConfig.get ('Host'),
             self.DBConfig.get ('Port'),
             self.DBConfig.get ('DatabaseName'),
-            self.DBConfig.get ('User'),
+            self.DBConfig.get ('Username'),
             self.DBConfig.get ('Password')
         )
 
