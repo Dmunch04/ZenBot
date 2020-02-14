@@ -15,10 +15,13 @@ class ZenBot (commands.Bot):
         super ().__init__ (
             command_prefix = Helper.GetPrefix,
             description = self.Description,
-            activity = discord.Game (name = self.Status.format (Helper.GetPrefix)),
+            activity = discord.Game (name = self.Status.format (Helper.GetPrefix)), # TODO: Fix so it displays the server's specified prefix
             case_insensitive = True,
             max_messages = 10_000
         )
+
+        self.Website = 'http://zenbot.xyz'
+        self.Plugins = []
 
         self.Database = Database (
             self.DBConfig.get ('Host'),
@@ -52,6 +55,13 @@ class ZenBot (commands.Bot):
     @property
     def Modules (self) -> dict:
         return self.Config.get ('Modules')
+
+    def RegisterPlugin (self, Name: str, Description: str, Commands: list):
+        self.Plugins.append ({
+            'Name': Name,
+            'Description': Description,
+            'Commands': Commands
+        })
 
     def LoadExtensions (self, Folder: str, Extensions: list, Suffix: str = ''):
         for Extension in Extensions:

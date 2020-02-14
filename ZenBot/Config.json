@@ -14,11 +14,12 @@
 
   "Modules": {
     "Commands": [
-      "Help"
+      "Help",
+      "Settings"
     ],
 
     "Plugins": [
-
+      "Twitter"
     ]
   }
 }
