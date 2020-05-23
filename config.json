@@ -1,0 +1,24 @@
+{
+  "token": "",
+  "description": "",
+  "status": "",
+  "invite": "",
+
+  "database": {
+    "host": "",
+    "port": "",
+    "name": "",
+    "username": "",
+    "password": ""
+  },
+
+  "modules": {
+    "commands": [
+
+    ],
+
+    "plugins": [
+
+    ]
+  }
+}
