@@ -11,12 +11,13 @@ DavesLogger = "^1.1.0"
 asyncio = "^3.4.3"
 aiohttp = "^3.6.2"
 requests = "^2.23.0"
+motor = "^2.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.6"
 
 [tool.poetry.scripts]
-run = "zenbot.main:run"
+start = "zenbot.main:run"
 
 [build-system]
 requires = ["poetry>=0.12"]

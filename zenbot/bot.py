@@ -3,6 +3,8 @@ from discord.ext import commands
 
 from .context import ZenContext
 from .logging import LogManager
+from .utils.prefix import get_prefix
+from .database import DataManager
 
 import json
 from datetime import datetime
@@ -12,8 +14,6 @@ from typing import (
     NoReturn,
     Any
 )
-
-from .utils.prefix import get_prefix
 
 
 class ZenBot(commands.Bot):
@@ -26,6 +26,7 @@ class ZenBot(commands.Bot):
             max_messages=10_000
         )
 
+        self.data_manager = DataManager(self.db_config)
         self.logger = LogManager()
 
     async def get_context(self, message, *, cls=ZenContext):
