@@ -18,5 +18,6 @@ class Events(commands.Cog):
         print(res)
         await self.client.data_manager.db.remove_by_id('xxyy')
 
+
 def setup(client: commands.Bot):
     client.add_cog(Events(client))

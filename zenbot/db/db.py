@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from ..data import config
+
 from motor.motor_asyncio import (
     AsyncIOMotorClient,
     AsyncIOMotorCursor,
@@ -14,15 +16,21 @@ from typing import (
 
 
 class Database:
-    def __init__(self, config: Dict[str, str]):
-        self.host = config.get('host', 'localhost') if not config.get('host').strip() == '' else 'localhost'
-        self.port = config.get('port', '27017') if not config.get('port').strip() == '' else '27017'
-        self.name = config.get('name', 'zenbot') if not config.get('name').strip() == '' else 'zenbot'
-        self.username = config.get('username', 'admin') if not config.get('username').strip() == '' else 'admin'
-        self.password = config.get('password', 'pwd') if not config.get('password').strip() == '' else 'pwd'
-        self.collection = config.get('collection', 'servers') if not config.get('collection').strip() == '' else 'servers'
+    def __init__(self):
+        self.host = config.get('host', 'localhost')
+        self.port = config.get('port', '27017')
+        self.name = config.get('name', 'zenbot')
+        self.username = config.get('username', 'admin')
+        self.password = config.get('password', 'pwd')
+        self.collection = config.get('collection', 'servers')
 
-        self.uri: str = 'mongodb://' + self.username + ':' + self.password + '@' + self.host + ':' + self.port + '/?authSource=' + self.name
+        self.use_auth = self.username != '' and self.password != ''
+
+        if self.use_auth:
+            self.uri: str = f'mongodb://{self.username}:{self.password}@{self.host}:{self.port}/?authSource={self.name}'
+        else:
+            self.uri: str = f'mongodb://{self.host}:{self.port}/?authSource={self.name}&ssl=false'
+
         self.client: AsyncIOMotorClient = AsyncIOMotorClient(self.uri)
         self.db: AsyncIOMotorDatabase = self.client.get_database(self.name)
         self.server_collection: AsyncIOMotorCollection = self.db.get_collection(self.collection)
