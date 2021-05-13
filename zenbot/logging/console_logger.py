@@ -2,9 +2,7 @@ from DavesLogger import Logs
 
 from .logger import Logger
 
-from typing import (
-    NoReturn
-)
+from typing import NoReturn
 
 
 class ConsoleLogger(Logger):

@@ -1,9 +1,9 @@
 from .db import Database
-from ..utils.collection import Collection
-from ..models.server import Server
+from zenbot.utils import Cache
+from zenbot.models import Server
 
 
 class DataManager:
     def __init__(self):
         self.db = Database()
-        self.servers = Collection(Server)
+        self.servers = Cache(Server)

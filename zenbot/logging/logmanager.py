@@ -1,9 +1,7 @@
 from .console_logger import ConsoleLogger
 from .file_logger import FileLogger
 
-from typing import (
-    NoReturn
-)
+from typing import NoReturn
 
 
 class LogManager:

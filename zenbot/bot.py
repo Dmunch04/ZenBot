@@ -8,11 +8,10 @@ from .logging import LogManager
 from .utils.prefix import get_prefix
 from .db import DataManager
 from .data import config
+from .commands import ZenCommand
 
 from datetime import datetime
-from typing import (
-    NoReturn,
-)
+from typing import NoReturn, List, Dict
 
 
 class ZenBot(commands.Bot):
@@ -22,39 +21,72 @@ class ZenBot(commands.Bot):
             description=config.bot_description,
             activity=discord.Game(name=config.status),
             case_insensitive=True,
-            max_messages=10_000
+            max_messages=10_000,
+            intents=discord.Intents(
+                bans=True,
+                dm_messages=True,
+                dm_reactions=True,
+                emojis=True,
+                guild_messages=True,
+                guild_reactions=True,
+                guilds=True,
+                invites=True,
+                members=True,
+                messages=True,
+                presences=True,
+                reactions=True,
+            ),
         )
 
         self.data_manager = DataManager()
         self.logger = LogManager()
 
-    async def get_context(self, message, *, cls=ZenContext):
-        return await super().get_context(message, cls=cls)
+        self._cmd_map = None
 
-    def load_single_extension(self, folder: str, ext: str) -> NoReturn:
-        try:
-            self.load_extension(f'zenbot.{folder}.{ext}')
-            self.logger.success(f'{ext} was successfully loaded!')
-        except Exception as e:
-            self.logger.error(f'{ext} cannot be loaded!\n\tError: {e}')
+    # TODO: servers should be able to disable specific commands,
+    #  so make a way to get a fixed cmd map according to the server and the commands it has disabled
+    @property
+    def cmd_map(self) -> Dict[str, ZenCommand]:
+        if not self._cmd_map:
+            self._cmd_map = {}
+            for cog_name in self.cogs:
+                cog = self.get_cog(cog_name)
+                if isinstance(cog, ZenCommand):
+                    self._cmd_map[cog.name] = cog
 
-    def startup(self):
-        self.logger.debug(f'Bot started at: {str(datetime.now())}')
+        return self._cmd_map
 
-        self.logger.debug('Removing command: help..')
-        self.remove_command('help')
+    def load_dir_exts(self, folder: str, ignore: List[str] = None) -> NoReturn:
+        if ignore is None:
+            ignore = []
 
-        self.logger.debug('Loading events file..')
-        self.load_extension('zenbot.events')
+        for ext in os.listdir(folder):
+            if ext.startswith("__") or not ext.endswith(".py") or ext in ignore:
+                continue
 
-        self.logger.debug('Loading commands..')
-        for command in os.listdir('./commands/'):
-            self.load_single_extension('commands', command)
+            ext = ".".join(ext.split(".")[:-1])
 
-        self.logger.debug('Loading plugins..')
-        for module in os.listdir('./modules/'):
-            self.load_single_extension('modules', module)
+            try:
+                self.load_extension(f"{folder.replace('/', '.')}{ext}")
+                self.logger.success(f"{ext} was successfully loaded!")
+            except Exception as e:
+                self.logger.error(f"{ext} cannot be loaded!\n\tError: {e}")
 
-        self.logger.debug('Running bot..')
-        self.run(config.get('token'))
-        self.logger.server('Bot exited!')
+    def startup(self) -> NoReturn:
+        self.logger.debug(f"Bot started at: {str(datetime.now())}")
+
+        self.logger.debug("Removing command: help..")
+        self.remove_command("help")
+
+        self.logger.debug("Loading events file..")
+        self.load_extension("zenbot.events")
+
+        self.logger.debug("Loading commands..")
+        self.load_dir_exts("zenbot/commands/", ignore=["command.py"])
+
+        self.logger.debug("Loading modules..")
+        self.load_dir_exts("zenbot/modules/", ignore=[])
+
+        self.logger.debug("Running bot..")
+        self.run(config.get("token"))
+        self.logger.server("Bot exited!")

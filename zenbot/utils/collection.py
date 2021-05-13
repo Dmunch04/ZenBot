@@ -1,13 +1,8 @@
-from typing import (
-    Any,
-    NoReturn,
-    List,
-    Callable
-)
+from typing import Any, NoReturn, List, Callable
 
 
 class Collection(dict):
-    __slots__ = ('data', 'index', 'instance')
+    __slots__ = ("data", "index", "instance")
 
     def __init__(self, instance: Any = dict, indexor: str = "id"):
         dict.__init__(self)
@@ -25,22 +20,22 @@ class Collection(dict):
         elif isinstance(other, self.instance):
             self.add(other)
         else:
-            raise ValueError('Item is not collection or instance of!')
+            raise ValueError("Item is not collection or instance of!")
 
     def __iadd__(self, other):
         self.__add__(other)
 
     def __setitem__(self, key, value):
         if not isinstance(value, self.instance):
-            raise ValueError(f'{value} is not an instance of {self.instance}!')
+            raise ValueError(f"{value} is not an instance of {self.instance}!")
         dict.__setitem__(self, key, value)
 
     def add(self, item: Any) -> NoReturn:
         if not isinstance(item, self.instance):
-            raise ValueError(f'{item} is not an instance of {self.instance}!')
+            raise ValueError(f"{item} is not an instance of {self.instance}!")
         index = getattr(item, self.index, None)
         if index is None:
-            raise AttributeError(f'{self.index} of {repr(item)} is invalid!')
+            raise AttributeError(f"{self.index} of {repr(item)} is invalid!")
         self[index] = item
 
     def remove(self, item: Any) -> NoReturn:
@@ -79,5 +74,5 @@ class Collection(dict):
                 return item
 
     def get(self, id: Any = None, **attrs: dict):
-        attrs['id'] = id or attrs.get('id')
+        attrs["id"] = id or attrs.get("id")
         return self.find_one(lambda i: self.has_attrs(i, **attrs))

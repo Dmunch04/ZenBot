@@ -1,6 +1,0 @@
-asyncio
-aiohttp
-requests
-discord.py~=1.3.3
-DavesLogger~=1.1.0
-motor~=2.1.0
