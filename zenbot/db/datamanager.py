@@ -16,6 +16,7 @@ class DataManager:
             res = await self.db.find_by_id(server.id)
             if res:
                 server = Server.from_dict(res[0], server)
+                await server.update_members_cache(server)
             else:
                 server = Server.new(bot, server)
                 await self.db.insert(server.to_dict())

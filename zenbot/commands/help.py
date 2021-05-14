@@ -1,5 +1,6 @@
 from typing import List, NoReturn
 
+import discord
 from discord.ext import commands
 
 from zenbot.models import PermissionLevel
@@ -12,7 +13,7 @@ class HelpCommand(commands.Cog, ZenCommand):
         self.bot = bot
 
     @commands.command("help")
-    #@has_permission()
+    # @has_permission()
     @has_cache()
     async def help(self, ctx: commands.Context, *, name: str = None):
         if not await check_perms(ctx, self.name):
@@ -20,24 +21,64 @@ class HelpCommand(commands.Cog, ZenCommand):
             await ctx.send("you dont have perms :P")
             return False
 
-        author = ctx.author
-        channel = ctx.channel
-        server = ctx.guild
-
-        # cmd_map = {self.bot.get_cog(cog).name: self.bot.get_cog(cog) for cog in self.bot.cogs if isinstance(self.bot.get_cog(cog), ZenCommand)}
-        """
-        cmd_map = {}
-        for cog_name in self.bot.cogs:
-            cog = self.bot.get_cog(cog_name)
-            if isinstance(cog, ZenCommand):
-                cmd_map[cog.name] = cog
-        """
+        cmd_map = self.bot.data_manager.servers.get(ctx.guild.id).cmd_map
 
         if name:
-            await ctx.send(self.bot.cmd_map[name].signature)
+            if name in cmd_map:
+                cmd = self.bot.cmd_map[name]
+
+                if not await check_perms(ctx, name):
+                    return
+
+                param_str = ""
+                for param in cmd.params:
+                    param_str += "*" if param.required else ""
+                    param_str += param.name + " - " + param.description
+                    param_str += "\n"
+
+                embed = discord.Embed(title=f"Help - `{cmd.name}` command")
+
+                embed.add_field(name="Category", value=cmd.category)
+                embed.add_field(name="Description", value=cmd.description)
+                # TODO: why doesnt the embed wanna send when this field is added lol
+                # embed.add_field(name="Parameters", value=param_str)
+                # TODO: get prefix
+                embed.add_field(name="Example", value=f"`{cmd.example}`")
+                embed.add_field(name="Signature", value=f"`{cmd.signature}`")
+
+                if ctx.channel.permissions_for(ctx.author).administrator:
+                    embed.add_field(name="Permission String", value=f"`{cmd.perm_str}`")
+                    embed.add_field(
+                        name="Permission Level", value=f"`{cmd.perm_level.name}`"
+                    )
+
+                await ctx.author.send(embed=embed)
         else:
-            for cmd in self.bot.cmd_map.values():
-                await ctx.send(cmd.signature)
+            embed = discord.Embed(
+                title="Help - List of available commands",
+                description="Here's a list of all the commands of ZenBot that are available to you.",
+            )
+
+            categories = {}
+            for name in cmd_map:
+                if not await check_perms(ctx, name):
+                    continue
+
+                cmd = self.bot.cmd_map[name]
+                if cmd.category not in categories:
+                    categories[cmd.category] = []
+
+                categories[cmd.category].append(cmd)
+
+            for category in categories:
+                cmds = categories[category]
+                cmds_str = ""
+                for cmd in cmds:
+                    cmds_str += f"**{cmd.name}** - {cmd.description}\n"
+
+                embed.add_field(name=category, value=cmds_str, inline=False)
+
+            await ctx.author.send(embed=embed)
 
     @property
     def name(self) -> str:
@@ -69,7 +110,6 @@ class HelpCommand(commands.Cog, ZenCommand):
 
     @property
     def example(self) -> str:
-        # TODO: should we get the prefix here instead?
         return "{prefix}help"
 
 

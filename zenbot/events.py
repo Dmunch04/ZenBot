@@ -24,32 +24,40 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, msg: discord.Message):
-        # if the server isnt in the cache, put it there
-        # NOTE: this also works for newly joined guilds!
-        if not self.bot.data_manager.servers.has(msg.guild.id):
-            await self.bot.data_manager.update_server_cache(self.bot, msg.guild)
+        if msg.guild is not None:
+            # if the server isnt in the cache, put it there
+            # NOTE: this also works for newly joined guilds!
+            if not self.bot.data_manager.servers.has(msg.guild.id):
+                await self.bot.data_manager.update_server_cache(self.bot, msg.guild)
 
-        if not self.bot.data_manager.servers.get(msg.guild.id).members.has(
-            msg.author.id
-        ):
-            self.bot.data_manager.servers.get(msg.guild.id).members.put(
-                msg.author.id, Member.new(msg.author, msg.guild), silent=True
-            )
+            # TODO: this should pretty much be redundant now (because of update_members_cache)
+            if not self.bot.data_manager.servers.get(msg.guild.id).members.has(
+                msg.author.id
+            ):
+                self.bot.data_manager.servers.get(msg.guild.id).members.put(
+                    msg.author.id, Member.new(msg.author, msg.guild), silent=True
+                )
 
-        self.bot.data_manager.servers.get(msg.guild.id).stats.messages_sent += 1
-        self.bot.data_manager.servers.get(msg.guild.id).members.get(
-            msg.author.id
-        ).messages_sent += 1
+            self.bot.data_manager.servers.get(msg.guild.id).stats.messages_sent += 1
+            self.bot.data_manager.servers.get(msg.guild.id).members.get(
+                msg.author.id
+            ).messages_sent += 1
 
-        # ! ONLY FOR TESTING
-        await self.bot.data_manager.save_cache_to_db()
+            # ! ONLY FOR TESTING
+            await self.bot.data_manager.save_cache_to_db()
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
+        self.bot.data_manager.servers.get(member.guild.id).members.put(
+            member.id, Member.new(member, member.guild)
+        )
+
         self.bot.data_manager.servers.get(member.guild.id).stats.current_members += 1
 
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
+        self.bot.data_manager.servers.get(member.guild.id).members.remove(member.id)
+
         self.bot.data_manager.servers.get(member.guild.id).stats.current_members -= 1
 
     @commands.Cog.listener()

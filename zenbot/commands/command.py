@@ -14,6 +14,15 @@ class ZenCommandParameter(object):
         self.required = required
         self.default = default
 
+    def __str__(self) -> str:
+        param_str = ""
+        param_str += "<" if self.required else "["
+        param_str += self.name
+        param_str += f"={str(self.default)}" if self.default else ""
+        param_str += ">" if self.required else "]"
+
+        return param_str
+
 
 class ZenCommand:
     @classmethod
@@ -53,13 +62,6 @@ class ZenCommand:
 
     @property
     def signature(self) -> str:
-        params = []
-        for param in self.parameters:
-            param_str = ""
-            param_str += "<" if param.required else "["
-            param_str += param.name
-            param_str += f"={str(param.default)}" if param.default else ""
-            param_str += ">" if param.required else "]"
-            params.append(param_str)
+        params = [str(param) for param in self.parameters]
 
         return f"{self.name} {' '.join(params)}"

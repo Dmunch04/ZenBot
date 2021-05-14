@@ -12,9 +12,8 @@ from .logging import LogManager
 from .utils.prefix import get_prefix
 
 
-# TODO: if a user joins or leaves while the bot is offline, when it gets online again the data wont have changed
+# TODO: what happens if a user joins the server while updating the members cache?
 # TODO: i accidentally messed up the imports lol
-# TODO: also add the new member objects when a member joins the server (and remove when someone leave, right?)
 
 
 class ZenBot(commands.Bot):
@@ -46,8 +45,6 @@ class ZenBot(commands.Bot):
 
         self._cmd_map = None
 
-    # TODO: servers should be able to disable specific commands,
-    #  so make a way to get a fixed cmd map according to the server and the commands it has disabled
     @property
     def cmd_map(self) -> Dict[str, ZenCommand]:
         if not self._cmd_map:

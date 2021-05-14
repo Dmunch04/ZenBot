@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 
 from zenbot.utils import spacify_string, Cache
-from .permission import PermissionLevel
+from .member import Member
 from .serializable import DBObject
 
 
@@ -63,67 +63,6 @@ class ServerStats(DBObject):
         return self
 
 
-class Member(DBObject):
-    __slots__ = (
-        "id",
-        "name",
-        "muted",
-        "perm_level",
-        "perms",
-        "messages_sent",
-    )
-
-    def __init__(
-        self,
-        id=None,
-        name=None,
-        muted=None,
-        perm_level=None,
-        perms=None,
-        messages_sent=None,
-    ):
-        self.id = id
-        self.name = name
-        self.muted = muted
-        self.perm_level = perm_level
-        self.perms = perms
-        self.messages_sent = messages_sent
-
-    @staticmethod
-    def new(member: discord.Member, server: discord.Guild):
-        return Member(
-            id=member.id,
-            name=member.name,
-            muted=False,
-            perm_level=PermissionLevel.GUEST,
-            perms=[],
-            messages_sent=0,
-        )
-
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            "id": str(self.id),
-            "name": str(self.name),
-            "muted": self.muted,
-            "permLevel": self.perm_level.value,
-            "perms": self.perms,
-            "messagesSent": self.messages_sent,
-        }
-
-    @staticmethod
-    def from_dict(data: Dict[str, Any], *args):
-        self = Member()
-        for key, value in data.items():
-            if key in ("id", "serverId"):
-                value = int(value)
-            elif key == "permLevel":
-                value = PermissionLevel(value)
-
-            setattr(self, spacify_string(key), value)
-
-        return self
-
-
 class Server(DBObject):
     __slots__ = (
         "id",
@@ -165,6 +104,16 @@ class Server(DBObject):
         if not isinstance(self.members, Cache) and isinstance(self.members, list):
             self.members = Cache.from_list(self.members, instance=Member, key="id")
 
+    async def update_members_cache(self, server: discord.Guild):
+        new_cache = Cache(Member)
+        for member in server.members:
+            if self.members.has(member.id):
+                new_cache.put(member.id, self.members.get(member.id))
+            else:
+                new_cache.put(member.id, Member.new(member, server))
+
+        self.members = new_cache
+
     @staticmethod
     def new(bot: commands.Bot, server: discord.Guild):
         return Server(
@@ -201,19 +150,16 @@ class Server(DBObject):
             if key in ("id", "owner"):
                 value = int(value)
             elif key == "members":
-                members = []
-                for member in value:
-                    member_instance = Member.new(
-                        server.get_member(int(member["id"])),
-                        server,
-                    )
-                    members.append(member_instance)
+                members = [
+                    Member.new(server.get_member(int(member["id"])), server)
+                    for member in value
+                ]
                 value = Cache.from_list(members, instance=Member, key="id")
             elif key == "settings":
                 value = ServerSettings.from_dict(value)
             elif key == "stats":
                 value = ServerStats.from_dict(value)
-            elif key == "joinedAt":
+            elif key in ("createdAt", "joinedAt"):
                 value = datetime.strptime(value, "%Y-%m-%d %H:%M:%S.%f")
 
             setattr(self, spacify_string(key), value)

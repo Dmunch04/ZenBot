@@ -10,7 +10,7 @@ def has_cache():
             await ctx.bot.data_manager.update_server_cache(ctx.bot, ctx.guild)
 
         if not ctx.bot.data_manager.servers.get(ctx.guild.id).members.has(
-                ctx.author.id
+            ctx.author.id
         ):
             ctx.bot.data_manager.servers.get(ctx.guild.id).members.put(
                 ctx.author.id, Member.new(ctx.author, ctx.guild), silent=True
