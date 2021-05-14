@@ -1,10 +1,10 @@
-from typing import Any, NoReturn
+from typing import Any, NoReturn, List
 
 
 class Cache(dict):
     __slots__ = "instance"
 
-    def __init__(self, instance: Any):
+    def __init__(self, instance: Any = dict):
         dict.__init__(self)
 
         self.instance = instance
@@ -22,8 +22,11 @@ class Cache(dict):
 
         self[key] = item
 
-    def get(self, key: str, default: Any = None) -> Any:
+    def get(self, key: str, default: Any = None, throw: bool = False) -> Any:
         if not self.has(key):
+            if throw:
+                raise ValueError(f"cache doesn't contain item with key {key}")
+
             return default
 
         return self[key]
@@ -36,3 +39,14 @@ class Cache(dict):
 
     def has(self, key: str) -> bool:
         return key in self
+
+    @staticmethod
+    def from_list(lst: List[Any], instance: Any = dict, key: str = "id"):
+        self = Cache(instance)
+        for value in lst:
+            if not hasattr(value, key):
+                raise AttributeError
+
+            self.put(getattr(value, key), value)
+
+        return self

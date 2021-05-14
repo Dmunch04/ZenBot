@@ -1,17 +1,16 @@
 import discord
 from discord.ext import commands
 
-from zenbot.bot import ZenBot
 from zenbot.models import Server
 
 
 class Events(commands.Cog):
-    def __init__(self, client: ZenBot):
-        self.client = client
+    def __init__(self, bot: commands.Bot):
+        self.bot = bot
 
     @commands.Cog.listener()
     async def on_ready(self):
-        self.client.logger.server("Bot is running! Awaiting user interaction...")
+        self.bot.logger.server("Bot is running! Awaiting user interaction...")
 
     @commands.Cog.listener()
     async def on_guild_join(self, server: discord.Guild):
@@ -20,37 +19,39 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_remove(self, server: discord.Guild):
-        self.client.data_manager.servers.remove(server.id)
+        self.bot.data_manager.servers.remove(server.id)
         # TODO: should we also remove the server from the DB?
 
     @commands.Cog.listener()
     async def on_message(self, msg: discord.Message):
         # if the server isnt in the cache, put it there
         # NOTE: this also works for newly joined guilds!
-        if not self.client.data_manager.servers.has(msg.guild.id):
-            server = Server(msg.guild)
-
-            res = await self.client.data_manager.db.find_by_id(msg.guild.id)
+        if not self.bot.data_manager.servers.has(msg.guild.id):
+            res = await self.bot.data_manager.db.find_by_id(msg.guild.id)
             if res:
-                server.from_dict(res[0])
+                server = Server.from_dict(res[0], msg.guild)
             else:
-                server.new()
-                await self.client.data_manager.db.insert(server.to_dict())
+                server = Server.new(msg.guild)
+                await self.bot.data_manager.db.insert(server.to_dict())
 
-            self.client.data_manager.servers.put(msg.guild.id, server)
+            self.bot.data_manager.servers.put(msg.guild.id, server)
 
-        self.client.data_manager.servers.get(msg.guild.id).stats.messages_sent += 1
-        # TODO: we need a cache of the servers members. not just a list oof.
-        #  how should we do that? like have a function that gets ran by both the `new` and `from_dict` methods
+        self.bot.data_manager.servers.get(msg.guild.id).stats.messages_sent += 1
+        self.bot.data_manager.servers.get(msg.guild.id).members.get(
+            msg.author.id
+        ).messages_sent += 1
+
+        #! ONLY FOR TESTING
+        await self.bot.data_manager.save_cache_to_db()
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
-        self.client.data_manager.servers.get(member.guild.id).stats.current_members += 1
+        self.bot.data_manager.servers.get(member.guild.id).stats.current_members += 1
 
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
-        self.client.data_manager.servers.get(member.guild.id).stats.current_members -= 1
+        self.bot.data_manager.servers.get(member.guild.id).stats.current_members -= 1
 
 
-def setup(client: commands.Bot):
-    client.add_cog(Events(client))
+def setup(bot: commands.Bot):
+    bot.add_cog(Events(bot))

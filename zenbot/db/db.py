@@ -48,11 +48,10 @@ class Database:
         return await cursor.to_list(length=1)
 
     async def update_by_id(self, id: str, document: Dict[str, Any]) -> NoReturn:
-        filter: Dict[str, str] = {"id": id}
+        filter: Dict[str, str] = {"id": str(id)}
         update = {
             "$set": document,
             "$currentDate": {"updatedAt": True},
-            "$setOnInsert": {"createdAt": datetime.utcnow()},
         }
 
         await self.server_collection.update_one(filter, update, upsert=True)
