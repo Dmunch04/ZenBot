@@ -40,6 +40,8 @@ class Events(commands.Cog):
             self.client.data_manager.servers.put(msg.guild.id, server)
 
         self.client.data_manager.servers.get(msg.guild.id).stats.messages_sent += 1
+        # TODO: we need a cache of the servers members. not just a list oof.
+        #  how should we do that? like have a function that gets ran by both the `new` and `from_dict` methods
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):

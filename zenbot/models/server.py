@@ -67,6 +67,7 @@ class Member(DBObject):
         "muted",
         "perm_level",
         "perms",
+        "messages_sent",
     )
 
     def __init__(self, member: discord.Member, server: discord.Guild):
@@ -80,6 +81,7 @@ class Member(DBObject):
         self.muted = False
         self.perm_level = PermissionLevel.GUEST
         self.perms = []
+        self.messages_sent = 0
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -89,6 +91,7 @@ class Member(DBObject):
             "muted": self.muted,
             "permLevel": self.perm_level.value,
             "perms": self.perms,
+            "messagesSent": self.messages_sent,
         }
 
     def from_dict(self, data: Dict[str, Any]) -> NoReturn:
@@ -112,6 +115,7 @@ class Server(DBObject):
         "settings",
         "stats",
         "joined_at",
+        "icon_url",
     )
 
     def __init__(self, server: discord.Guild):
@@ -129,7 +133,8 @@ class Server(DBObject):
         self.created_at = self.server_instance.created_at
         self.settings = ServerSettings.new()
         self.stats = ServerStats.new(self.server_instance)
-        self.joined_at = datetime.utcnow()
+        self.joined_at = self.server_instance.me.joined_at or datetime.utcnow()
+        self.icon_url = str(self.server_instance.icon_url)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -140,6 +145,7 @@ class Server(DBObject):
             "settings": self.settings.to_dict(),
             "stats": self.stats.to_dict(),
             "joinedAt": str(self.joined_at),
+            "iconUrl": self.icon_url,
         }
 
     def from_dict(self, data: Dict[str, Any]) -> NoReturn:
@@ -168,3 +174,81 @@ class Server(DBObject):
                 value = datetime.strptime(value, "%Y-%m-%d %H:%M:%S.%f")
 
             setattr(self, spacify_string(key), value)
+
+
+class DBTestObject:
+    __slots__ = ("some_obj", "a", "b", "c")
+
+    def __init__(self, some_obj):
+        self.some_obj = some_obj
+        self.a = getattr(some_obj, "a", 0)
+        self.b = getattr(some_obj, "a", 1)
+        self.c = getattr(some_obj, "a", 2)
+
+    @staticmethod
+    def new():
+        return DBTestObject.from_dict(
+            {
+                "a": 0,
+                "b": 1,
+                "c": 2,
+            }
+        )
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "a": self.a,
+            "b": self.b,
+            "c": self.c,
+        }
+
+    @staticmethod
+    def from_dict(data: Dict[str, Any]):
+        self = DBTestObject(None)  # ?
+        for key, value in data.items():
+            setattr(self, key, value)
+
+        return self
+
+
+# isnt this basically like the current method? or at least very close tbh
+class OtherDBTestObject:
+    __slots__ = ("test_obj", "a", "b", "c")
+
+    # create empty? (this shouldnt be used then perhaps?)
+    def __init__(self, a=2, b=1, c=0):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    # create empty using the test_obj values and also setting the test_obj in the process
+    @staticmethod
+    def new(test_obj: DBTestObject):
+        self = OtherDBTestObject(
+            a=test_obj.a,
+            b=test_obj.b,
+            c=str(test_obj.c),
+        )
+        self.test_obj = test_obj
+
+        return self
+
+    # make it into a dict
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "a": self.a,
+            "b": self.b,
+            "c": self.c,
+        }
+
+    # load it from a dict
+    @staticmethod
+    def from_dict(data: Dict[str, Any]):
+        self = OtherDBTestObject()
+        for key, value in data.items():
+            if key == "c":
+                value = str(value)
+
+            setattr(self, key, value)
+
+        return self
