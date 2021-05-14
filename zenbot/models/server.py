@@ -252,3 +252,35 @@ class OtherDBTestObject:
             setattr(self, key, value)
 
         return self
+
+
+class ImprovedDBObject:
+    __slots__ = ("a", "b", "c")
+
+    def __init__(self, a=None, b=None, c=None):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    @staticmethod
+    def new(obj: DBTestObject):
+        return ImprovedDBObject(
+            a=obj.a,
+            b=obj.b,
+            c=obj.c,
+        )
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "a": self.a,
+            "b": self.b,
+            "c": self.c,
+        }
+
+    @staticmethod
+    def from_dict(data: Dict[str, Any]):
+        self = ImprovedDBObject()
+        for key, value in data.items():
+            setattr(self, key, value)
+
+        return self
