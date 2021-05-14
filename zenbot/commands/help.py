@@ -1,8 +1,10 @@
-import discord
-from discord.ext import commands
 from typing import List, NoReturn
-from .command import ZenCommand, ZenCommandParameter
+
+from discord.ext import commands
+
 from zenbot.models import PermissionLevel
+from zenbot.helpers import has_cache, check_perms
+from .command import ZenCommand, ZenCommandParameter
 
 
 class HelpCommand(commands.Cog, ZenCommand):
@@ -10,7 +12,14 @@ class HelpCommand(commands.Cog, ZenCommand):
         self.bot = bot
 
     @commands.command("help")
+    #@has_permission()
+    @has_cache()
     async def help(self, ctx: commands.Context, *, name: str = None):
+        if not await check_perms(ctx, self.name):
+            # TODO: embed error
+            await ctx.send("you dont have perms :P")
+            return False
+
         author = ctx.author
         channel = ctx.channel
         server = ctx.guild

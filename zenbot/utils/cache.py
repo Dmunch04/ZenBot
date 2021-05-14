@@ -13,12 +13,16 @@ class Cache(dict):
         for value in self.values():
             yield value
 
-    def put(self, key: str, item: Any) -> NoReturn:
+    def put(self, key: str, item: Any, silent: bool = False) -> NoReturn:
         if not isinstance(item, self.instance):
-            raise ValueError
+            if not silent:
+                raise ValueError(f"item not instance of cache type ({self.instance})")
+            return
 
         if self.has(key):
-            raise ValueError
+            if not silent:
+                raise ValueError(f"cache already contains item with key {key}")
+            return
 
         self[key] = item
 

@@ -1,4 +1,4 @@
-from typing import Dict, Any, NoReturn
+from typing import Dict, Any
 
 
 class DBObject(object):

@@ -1,6 +1,4 @@
-from datetime import datetime
-
-from ..data import config
+from typing import Dict, Any, NoReturn
 
 from motor.motor_asyncio import (
     AsyncIOMotorClient,
@@ -8,7 +6,8 @@ from motor.motor_asyncio import (
     AsyncIOMotorDatabase,
     AsyncIOMotorCollection,
 )
-from typing import Dict, Any, NoReturn
+
+from ..data import config
 
 
 class Database:

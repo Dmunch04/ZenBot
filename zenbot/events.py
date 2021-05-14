@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from zenbot.models import Server
+from zenbot.models import Server, Member
 
 
 class Events(commands.Cog):
@@ -27,21 +27,21 @@ class Events(commands.Cog):
         # if the server isnt in the cache, put it there
         # NOTE: this also works for newly joined guilds!
         if not self.bot.data_manager.servers.has(msg.guild.id):
-            res = await self.bot.data_manager.db.find_by_id(msg.guild.id)
-            if res:
-                server = Server.from_dict(res[0], msg.guild)
-            else:
-                server = Server.new(msg.guild)
-                await self.bot.data_manager.db.insert(server.to_dict())
+            await self.bot.data_manager.update_server_cache(self.bot, msg.guild)
 
-            self.bot.data_manager.servers.put(msg.guild.id, server)
+        if not self.bot.data_manager.servers.get(msg.guild.id).members.has(
+            msg.author.id
+        ):
+            self.bot.data_manager.servers.get(msg.guild.id).members.put(
+                msg.author.id, Member.new(msg.author, msg.guild), silent=True
+            )
 
         self.bot.data_manager.servers.get(msg.guild.id).stats.messages_sent += 1
         self.bot.data_manager.servers.get(msg.guild.id).members.get(
             msg.author.id
         ).messages_sent += 1
 
-        #! ONLY FOR TESTING
+        # ! ONLY FOR TESTING
         await self.bot.data_manager.save_cache_to_db()
 
     @commands.Cog.listener()
@@ -51,6 +51,16 @@ class Events(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
         self.bot.data_manager.servers.get(member.guild.id).stats.current_members -= 1
+
+    @commands.Cog.listener()
+    async def on_command(self, ctx: commands.Context):
+        pass
+
+    @commands.Cog.listener()
+    async def on_command_error(
+        self, ctx: commands.Context, error: commands.CommandError
+    ):
+        pass
 
 
 def setup(bot: commands.Bot):

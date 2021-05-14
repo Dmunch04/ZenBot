@@ -1,11 +1,12 @@
-from .serializable import DBObject
-from .permission import PermissionLevel
-from zenbot.utils import spacify_string, Cache
+from datetime import datetime
+from typing import Dict, Any, NoReturn
 
 import discord
-from datetime import datetime
+from discord.ext import commands
 
-from typing import Dict, Any, NoReturn
+from zenbot.utils import spacify_string, Cache
+from .permission import PermissionLevel
+from .serializable import DBObject
 
 
 class ServerSettings(DBObject):
@@ -134,6 +135,7 @@ class Server(DBObject):
         "stats",
         "joined_at",
         "icon_url",
+        "cmd_map",
     )
 
     def __init__(
@@ -147,6 +149,7 @@ class Server(DBObject):
         stats=None,
         joined_at=None,
         icon_url=None,
+        cmd_map=None,
     ):
         self.id = id
         self.name = name
@@ -157,12 +160,13 @@ class Server(DBObject):
         self.stats = stats
         self.joined_at = joined_at
         self.icon_url = icon_url
+        self.cmd_map = cmd_map
 
         if not isinstance(self.members, Cache) and isinstance(self.members, list):
             self.members = Cache.from_list(self.members, instance=Member, key="id")
 
     @staticmethod
-    def new(server: discord.Guild):
+    def new(bot: commands.Bot, server: discord.Guild):
         return Server(
             id=server.id,
             name=server.name,
@@ -173,6 +177,7 @@ class Server(DBObject):
             stats=ServerStats.new(server),
             joined_at=server.me.joined_at or datetime.utcnow(),
             icon_url=str(server.icon_url),
+            cmd_map=bot.simple_cmd_map,
         )
 
     def to_dict(self) -> Dict[str, Any]:
@@ -186,6 +191,7 @@ class Server(DBObject):
             "stats": self.stats.to_dict(),
             "joinedAt": str(self.joined_at),
             "iconUrl": self.icon_url,
+            "cmdMap": self.cmd_map,
         }
 
     @staticmethod

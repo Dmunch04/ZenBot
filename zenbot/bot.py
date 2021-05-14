@@ -1,17 +1,20 @@
 import os
+from datetime import datetime
+from typing import NoReturn, List, Dict
 
 import discord
 from discord.ext import commands
 
-from .context import ZenContext
+from .commands import ZenCommand
+from .data import config
+from .db import DataManager
 from .logging import LogManager
 from .utils.prefix import get_prefix
-from .db import DataManager
-from .data import config
-from .commands import ZenCommand
 
-from datetime import datetime
-from typing import NoReturn, List, Dict
+
+# TODO: if a user joins or leaves while the bot is offline, when it gets online again the data wont have changed
+# TODO: i accidentally messed up the imports lol
+# TODO: also add the new member objects when a member joins the server (and remove when someone leave, right?)
 
 
 class ZenBot(commands.Bot):
@@ -55,6 +58,14 @@ class ZenBot(commands.Bot):
                     self._cmd_map[cog.name] = cog
 
         return self._cmd_map
+
+    @property
+    def simple_cmd_map(self) -> Dict[str, int]:
+        simple_cmd_map = {}
+        for name, cmd in self.cmd_map.items():
+            simple_cmd_map[name] = int(cmd.perm_level)
+
+        return simple_cmd_map
 
     def load_dir_exts(self, folder: str, ignore: List[str] = None) -> NoReturn:
         if ignore is None:
