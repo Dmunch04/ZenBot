@@ -1,8 +1,10 @@
-from datetime import datetime
+import calendar
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta, MO
 
 import discord
 
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 from zenbot.utils import spacify_string
 from .permission import PermissionLevel
@@ -10,15 +12,55 @@ from .serializable import DBObject
 
 
 class Mute(object):
-    __slots__ = ("duration", "moderator", "reason", "timestamp")
+    __slots__ = (
+        "duration",
+        "moderator",
+        "reason",
+        "timestamp",
+        "expires_at",
+        "is_expired",
+    )
 
     def __init__(
-        self, duration, moderator, reason="Unreasoned", timestamp=datetime.utcnow()
+        self,
+        duration,
+        moderator,
+        reason="Unreasoned",
+        timestamp=datetime.utcnow(),
+        expires_at=None,
+        is_expired=False,
     ):
         self.duration = duration
         self.moderator = moderator
         self.reason = reason
         self.timestamp = timestamp
+        self.expires_at = expires_at or self._calculate_expires_at(duration, timestamp)
+        # TODO: it actually executes the latter if `is_expired` is false right? eh
+        self.is_expired = is_expired or (self.timestamp <= self.expires_at)
+
+    def _calculate_expires_at(
+        self, duration: str, timestamp: datetime
+    ) -> Optional[datetime]:
+        import re
+
+        match = re.match(r"(\d+)([smhdwMy])", duration)
+        if match:
+            if match.group(2) == "s":
+                return timestamp + timedelta(seconds=int(match.group(1)))
+            elif match.group(2) == "m":
+                return timestamp + timedelta(minutes=int(match.group(1)))
+            elif match.group(2) == "h":
+                return timestamp + timedelta(hours=int(match.group(1)))
+            elif match.group(2) == "d":
+                return timestamp + timedelta(days=int(match.group(1)))
+            elif match.group(2) == "w":
+                return timestamp + timedelta(weeks=int(match.group(1)))
+            elif match.group(2) == "M":
+                return timestamp + relativedelta(months=int(match.group(1)))
+            elif match.group(2) == "y":
+                return timestamp + relativedelta(years=int(match.group(1)))
+
+        return None
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -26,6 +68,8 @@ class Mute(object):
             "moderator": str(self.moderator),
             "reason": self.reason,
             "timestamp": str(self.timestamp),
+            "expiresAt": str(self.expires_at),
+            "isExpired": self.is_expired,
         }
 
     @staticmethod
@@ -35,6 +79,8 @@ class Mute(object):
             int(data.get("moderator")),
             data.get("reason"),
             datetime.strptime(data.get("timestamp"), "%Y-%m-%d %H:%M:%S.%f"),
+            datetime.strptime(data.get("expiresAt"), "%Y-%m-%d %H:%M:%S.%f"),
+            data.get("isExpired"),
         )
 
 

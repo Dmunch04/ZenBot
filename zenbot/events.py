@@ -24,6 +24,8 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, msg: discord.Message):
+        # TODO: check if the user is muted
+
         if msg.guild is not None:
             # if the server isnt in the cache, put it there
             # NOTE: this also works for newly joined guilds!
@@ -68,7 +70,9 @@ class Events(commands.Cog):
     async def on_command_error(
         self, ctx: commands.Context, error: commands.CommandError
     ):
-        pass
+        import DavesLogger
+
+        DavesLogger.Logs.Error(error.__str__())
 
 
 def setup(bot: commands.Bot):

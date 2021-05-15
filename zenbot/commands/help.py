@@ -28,28 +28,36 @@ class HelpCommand(commands.Cog, ZenCommand):
                 cmd = self.bot.cmd_map[name]
 
                 if not await check_perms(ctx, name):
-                    return
+                    return False
 
                 param_str = ""
-                for param in cmd.params:
+                for param in cmd.parameters:
                     param_str += "*" if param.required else ""
-                    param_str += param.name + " - " + param.description
+                    param_str += f"`{param.name}` - {param.description}"
                     param_str += "\n"
 
                 embed = discord.Embed(title=f"Help - `{cmd.name}` command")
 
-                embed.add_field(name="Category", value=cmd.category)
-                embed.add_field(name="Description", value=cmd.description)
-                # TODO: why doesnt the embed wanna send when this field is added lol
-                # embed.add_field(name="Parameters", value=param_str)
-                # TODO: get prefix
-                embed.add_field(name="Example", value=f"`{cmd.example}`")
-                embed.add_field(name="Signature", value=f"`{cmd.signature}`")
+                embed.add_field(name=":file_folder: Category", value=cmd.category)
+                embed.add_field(
+                    name=":information_source: Description", value=cmd.description
+                )
+                embed.add_field(name=":page_facing_up: Parameters", value=param_str)
+                embed.add_field(
+                    name=":clipboard: Example",
+                    value=f"`{cmd.example.format(prefix=self.bot.data_manager.servers.get(ctx.guild.id).settings.prefix)}`",
+                )
+                embed.add_field(
+                    name=":pen_ballpoint: Signature", value=f"`{cmd.signature}`"
+                )
 
                 if ctx.channel.permissions_for(ctx.author).administrator:
-                    embed.add_field(name="Permission String", value=f"`{cmd.perm_str}`")
                     embed.add_field(
-                        name="Permission Level", value=f"`{cmd.perm_level.name}`"
+                        name=":unlock: Permission String", value=f"`{cmd.perm_str}`"
+                    )
+                    embed.add_field(
+                        name=":unlock: Permission Level",
+                        value=f"`{cmd.perm_level.name}`",
                     )
 
                 await ctx.author.send(embed=embed)
@@ -79,6 +87,8 @@ class HelpCommand(commands.Cog, ZenCommand):
                 embed.add_field(name=category, value=cmds_str, inline=False)
 
             await ctx.author.send(embed=embed)
+
+        return True
 
     @property
     def name(self) -> str:

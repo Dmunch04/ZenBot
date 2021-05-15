@@ -12,6 +12,7 @@ asyncio = "^3.4.3"
 aiohttp = "^3.6.2"
 requests = "^2.23.0"
 motor = "^2.1.0"
+python-dateutil = "^2.8.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.6"

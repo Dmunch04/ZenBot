@@ -2,7 +2,7 @@ from typing import List, NoReturn
 
 from discord.ext import commands
 
-from zenbot.models import PermissionLevel
+from zenbot.models import PermissionLevel, Mute
 from zenbot.helpers import has_cache, check_perms
 from .command import ZenCommand, ZenCommandParameter
 
@@ -13,12 +13,12 @@ class MuteCommand(commands.Cog, ZenCommand):
 
     @commands.command("mute")
     @has_cache()
-    async def help(
+    async def mute(
         self,
         ctx: commands.Context,
-        *,
         user_id: str,
         duration: str = "10m",
+        *,
         reason: str = "Unreasoned",
     ):
         if not await check_perms(ctx, self.name):
@@ -26,9 +26,12 @@ class MuteCommand(commands.Cog, ZenCommand):
             await ctx.send("you dont have perms :P")
             return False
 
-        author = ctx.author
-        channel = ctx.channel
-        server = ctx.guild
+        # TODO: make sure theres a user in the server with that id
+
+        mute = Mute(duration, ctx.author.id, reason)
+        self.bot.data_manager.servers.get(ctx.guild.id).members.get(
+            user_id
+        ).mutes.append(mute)
 
     @property
     def name(self) -> str:

@@ -13,6 +13,11 @@ from .utils.prefix import get_prefix
 
 
 # TODO: what happens if a user joins the server while updating the members cache?
+# TODO: disallow most of the commands in DMs (except for maybe a `info` command)
+# TODO: currently the bot generates 2 new DB objects when a server is being added for the first time
+#  (NOTE: i think this only happens when the first message is a command,
+#         because new servers both gets handled async in the on_message and before a command is invoked)
+
 # TODO: i accidentally messed up the imports lol
 
 
