@@ -19,7 +19,9 @@ class DataManager:
                 await server.update_members_cache(server)
             else:
                 server = Server.new(bot, server)
-                await self.db.insert(server.to_dict())
+                #await self.db.insert(server.to_dict())
+                # TODO: this isnt an optimal solution to the problem, but it works for now
+                await self.db.update_by_id(server.id, server.to_dict())
 
             self.servers.put(server.id, server, silent=True)
 

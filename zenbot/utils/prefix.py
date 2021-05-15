@@ -15,7 +15,7 @@ async def get_prefix(bot: commands.Bot, message: discord.Message):
     # TODO: nope. im not able to remove the system in on_message without it breaking sadly.
     #  although that obviously is only the case for the first message. so perhaps it would be better to just load all
     #  servers into cache when the bot is loading? although that might still introduce problems like if the server isnt
-    #  in the cache yet when someone sends a message or a command. so the bot should be "usable" until then
+    #  in the cache yet when someone sends a message or a command. so the bot shouldnt be "usable" until then
     if not bot.data_manager.servers.has(message.guild.id):
         # TODO: why doesnt this change anything??
         return prefix
