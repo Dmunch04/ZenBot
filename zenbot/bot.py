@@ -17,6 +17,14 @@ from .utils.prefix import get_prefix
 # TODO: currently the bot generates 2 new DB objects when a server is being added for the first time
 #  (NOTE: i think this only happens when the first message is a command,
 #         because new servers both gets handled async in the on_message and before a command is invoked)
+# TODO: about the 2 objects per server in the DB, like i wrote in prefix.py i found out it didnt help
+#  to just comment out the system in on_message, but a solution i know for sure would work is to use
+#  mongo update document instead of insert. although this isnt the perfect solution i was hoping to come to,
+#  it might be the only that makes sense so i dont have to load all servers into the cache when loading the bot
+# TODO: odd note to the above issue: commenting out the part where i add the server to the cache
+#  if it isnt already there in the prefix.py file, doesnt change the fact that it creates 2 objects in the db.
+#  not sure as to why, as i dont recall encountering that issue before i implemented that feature.
+#  further testing seems to be needed
 
 # TODO: i accidentally messed up the imports lol
 
